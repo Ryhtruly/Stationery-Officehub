@@ -2,7 +2,6 @@ from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton
 import sys
 from PyQt5.QtCore import pyqtSlot, QFile, QTextStream
 from numpy.ma.core import append
-
 from new_dashboard import Ui_MainWindow
 
 class MainWindow(QMainWindow):
