@@ -1,10 +1,17 @@
-from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton, QLabel, QVBoxLayout, QWidget
+from PyQt5.QtWidgets import QStackedWidget, QMainWindow, QApplication, QPushButton, QLabel, QVBoxLayout, QWidget, \
+    QMessageBox
 import sys
-from new_dashboard import Ui_MainWindow
+from PyQt5.QtCore import pyqtSignal, Qt
 
-class MainWindow(QMainWindow):
+from new_dashboard import Ui_MainWindow
+from run_log import LoginWindow
+
+
+
+
+class AdminWindow(QMainWindow):
     def __init__(self):
-        super(MainWindow, self).__init__()
+        super(AdminWindow, self).__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
@@ -34,6 +41,9 @@ class MainWindow(QMainWindow):
         self.ui.header_layout = self.ui.widget.layout()
         self.ui.header_layout.insertWidget(1, self.ui.logo_label)
 
+        # Đặt nền trong suốt
+        self.setAttribute(Qt.WA_TranslucentBackground)
+
     def on_search_btn_clicked(self):
         self.ui.stackedWidget.setCurrentIndex(5)
         search_text = self.ui.Search_input.text().strip()
@@ -43,11 +53,11 @@ class MainWindow(QMainWindow):
     def on_user_btn_clicked(self):
         self.ui.stackedWidget.setCurrentIndex(6)
 
-    def on_stackedWidget_curentChanged(self,index):
+    def on_stackedWidget_curentChanged(self, index):
         btn_list = self.ui.icon_only.findChildren(QPushButton) \
-        + self.ui.Full_menu.findChildren(QPushButton)
+                   + self.ui.Full_menu.findChildren(QPushButton)
         for btn in btn_list:
-            if index in [5,6]:
+            if index in [5, 6]:
                 btn.setAutoExclusive(False)
                 btn.setChecked(False)
             else:
@@ -85,6 +95,28 @@ class MainWindow(QMainWindow):
         self.ui.stackedWidget.setCurrentIndex(4)
 
 
+class MainApp(QStackedWidget):
+    def __init__(self):
+        super(MainApp, self).__init__()
+        self.setGeometry(410, 140, 1100, 800)
+
+        self.setObjectName("MainWindow")
+
+        self.login_window = LoginWindow()
+        self.dashboard_window = AdminWindow()
+
+        self.login_window.setAttribute(Qt.WA_TranslucentBackground)
+
+        self.addWidget(self.login_window)  # Index 0
+        self.addWidget(self.dashboard_window)  # Index 1
+
+        self.login_window.login_successful.connect(self.show_dashboard)
+        self.setCurrentIndex(0)
+
+    def show_dashboard(self):
+        self.setCurrentIndex(1)
+
+
 if __name__ == "__main__":
     app = QApplication(sys.argv)
 
@@ -92,6 +124,6 @@ if __name__ == "__main__":
         style_str = style_file.read()
 
     app.setStyleSheet(style_str)
-    window = MainWindow()
-    window.show()
-    sys.exit(app.exec())
+    main_app = MainApp()
+    main_app.show()
+    sys.exit(app.exec_())
