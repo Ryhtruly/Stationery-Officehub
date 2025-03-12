@@ -30,21 +30,6 @@
     <item row="0" column="0">
      <widget class="QWidget" name="icon_only" native="true">
       <layout class="QVBoxLayout" name="verticalLayout_2">
-       <property name="spacing">
-        <number>0</number>
-       </property>
-       <property name="leftMargin">
-        <number>0</number>
-       </property>
-       <property name="topMargin">
-        <number>0</number>
-       </property>
-       <property name="rightMargin">
-        <number>0</number>
-       </property>
-       <property name="bottomMargin">
-        <number>0</number>
-       </property>
        <item>
         <widget class="QLabel" name="label">
          <property name="maximumSize">
@@ -79,14 +64,8 @@
        </item>
        <item>
         <layout class="QVBoxLayout" name="verticalLayout">
-         <property name="spacing">
-          <number>14</number>
-         </property>
-         <property name="topMargin">
-          <number>15</number>
-         </property>
          <property name="bottomMargin">
-          <number>27</number>
+          <number>60</number>
          </property>
          <item>
           <widget class="QPushButton" name="home_nbtn_1">
@@ -115,24 +94,6 @@
             <iconset resource="resource.qrc">
              <normaloff>:/icons/icon/product-48.ico</normaloff>
              <normalon>:/icons/icon/product-48 (1).ico</normalon>:/icons/icon/product-48.ico</iconset>
-           </property>
-           <property name="checkable">
-            <bool>true</bool>
-           </property>
-           <property name="autoExclusive">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="cart_btn_1">
-           <property name="text">
-            <string/>
-           </property>
-           <property name="icon">
-            <iconset resource="resource.qrc">
-             <normaloff>:/icons/icon/cart-59-xl (1).png</normaloff>
-             <normalon>:/icons/icon/cart-59-xl.png</normalon>:/icons/icon/cart-59-xl (1).png</iconset>
            </property>
            <property name="checkable">
             <bool>true</bool>
@@ -202,21 +163,6 @@
     <item row="0" column="1">
      <widget class="QWidget" name="full_menu" native="true">
       <layout class="QVBoxLayout" name="verticalLayout_4">
-       <property name="spacing">
-        <number>0</number>
-       </property>
-       <property name="leftMargin">
-        <number>0</number>
-       </property>
-       <property name="topMargin">
-        <number>0</number>
-       </property>
-       <property name="rightMargin">
-        <number>0</number>
-       </property>
-       <property name="bottomMargin">
-        <number>0</number>
-       </property>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout">
          <item>
@@ -267,14 +213,8 @@
        </item>
        <item>
         <layout class="QVBoxLayout" name="verticalLayout_3">
-         <property name="spacing">
-          <number>15</number>
-         </property>
-         <property name="topMargin">
-          <number>71</number>
-         </property>
          <property name="bottomMargin">
-          <number>0</number>
+          <number>40</number>
          </property>
          <item>
           <widget class="QPushButton" name="home_btn_2">
@@ -303,24 +243,6 @@
             <iconset resource="resource.qrc">
              <normaloff>:/icons/icon/product-48.ico</normaloff>
              <normalon>:/icons/icon/product-48 (1).ico</normalon>:/icons/icon/product-48.ico</iconset>
-           </property>
-           <property name="checkable">
-            <bool>true</bool>
-           </property>
-           <property name="autoExclusive">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="cart_btn_2">
-           <property name="text">
-            <string>Cart</string>
-           </property>
-           <property name="icon">
-            <iconset resource="resource.qrc">
-             <normaloff>:/icons/icon/cart-59-xl (1).png</normaloff>
-             <normalon>:/icons/icon/cart-59-xl.png</normalon>:/icons/icon/cart-59-xl (1).png</iconset>
            </property>
            <property name="checkable">
             <bool>true</bool>
@@ -508,32 +430,141 @@
        <item>
         <widget class="QStackedWidget" name="stackedWidget">
          <widget class="QWidget" name="home_widget">
+          <layout class="QGridLayout" name="gridLayout_3">
+           <item row="0" column="1">
+            <spacer name="verticalSpacer_5">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>37</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item row="1" column="0">
+            <spacer name="horizontalSpacer_3">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>45</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item row="1" column="1">
+            <layout class="QGridLayout" name="gridLayout_2">
+             <item row="0" column="0" colspan="3">
+              <widget class="QWidget" name="widget_2" native="true">
+               <property name="minimumSize">
+                <size>
+                 <width>709</width>
+                 <height>306</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">border-image: url(:/icons/icon/2069577.jpg);
+border-radius : 10px;</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QWidget" name="widget_4" native="true">
+               <property name="minimumSize">
+                <size>
+                 <width>232</width>
+                 <height>306</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">border-image: url(:/icons/icon/542136743259c1e91c1d385eff4f5ca1.jfif);
+border-radius : 10px;</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QWidget" name="widget_5" native="true">
+               <property name="minimumSize">
+                <size>
+                 <width>231</width>
+                 <height>306</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">border-image: url(:/icons/icon/H2C5xJgEUPZ4HsY2ouNCGQ.jpg);</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="2">
+              <widget class="QWidget" name="widget_6" native="true">
+               <property name="minimumSize">
+                <size>
+                 <width>232</width>
+                 <height>306</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">border-image: url(:/icons/icon/e2948946e4e38b103135e053b191-1445875.jpg!d);</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="1" column="2">
+            <spacer name="horizontalSpacer_4">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>44</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item row="2" column="1">
+            <spacer name="verticalSpacer_6">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="product_widget">
+          <widget class="QWidget" name="widget_7" native="true">
+           <property name="geometry">
+            <rect>
+             <x>150</x>
+             <y>90</y>
+             <width>120</width>
+             <height>91</height>
+            </rect>
+           </property>
+          </widget>
           <widget class="QPushButton" name="pushButton">
            <property name="geometry">
             <rect>
-             <x>270</x>
+             <x>220</x>
              <y>200</y>
-             <width>321</width>
-             <height>191</height>
+             <width>41</width>
+             <height>28</height>
             </rect>
            </property>
            <property name="text">
-            <string>Home</string>
-           </property>
-          </widget>
-         </widget>
-         <widget class="QWidget" name="product_widget">
-          <widget class="QPushButton" name="pushButton_2">
-           <property name="geometry">
-            <rect>
-             <x>360</x>
-             <y>150</y>
-             <width>241</width>
-             <height>201</height>
-            </rect>
-           </property>
-           <property name="text">
-            <string>product_widget</string>
+            <string>PushButton</string>
            </property>
           </widget>
          </widget>
@@ -607,7 +638,6 @@
  </widget>
  <resources>
   <include location="resource.qrc"/>
-  <include location="resource.qrc"/>
  </resources>
  <connections>
   <connection>
@@ -675,22 +705,6 @@
    </hints>
   </connection>
   <connection>
-   <sender>cart_btn_1</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>cart_btn_2</receiver>
-   <slot>setChecked(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>66</x>
-     <y>275</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>99</x>
-     <y>256</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>customer_btn_1</sender>
    <signal>toggled(bool)</signal>
    <receiver>cusomer_btn_2</receiver>
@@ -735,22 +749,6 @@
     <hint type="destinationlabel">
      <x>34</x>
      <y>221</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>cart_btn_2</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>cart_btn_1</receiver>
-   <slot>setChecked(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>235</x>
-     <y>254</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>61</x>
-     <y>249</y>
     </hint>
    </hints>
   </connection>

@@ -19,13 +19,12 @@ class AdminWindow(QMainWindow):
 
         self.ui.home_nbtn_1.clicked.connect(self.on_home_btn_1)
         self.ui.product_btn_1.clicked.connect(self.on_product_btn_1)
-        self.ui.cart_btn_1.clicked.connect(self.on_cart_btn_1)
         self.ui.customer_btn_1.clicked.connect(self.on_customer_btn_1)
 
         self.ui.home_btn_2.clicked.connect(self.on_home_btn_2)
         self.ui.product_btn_2.clicked.connect(self.on_product_btn_2)
         self.ui.cusomer_btn_2.clicked.connect(self.on_customer_btn_2)
-        self.ui.cart_btn_2.clicked.connect(self.on_cart_btn_2)
+
 
         self.ui.search_btn.clicked.connect(self.on_search_btn_clicked)
         self.ui.user_btn.clicked.connect(self.on_user_btn_clicked)
@@ -52,7 +51,7 @@ class AdminWindow(QMainWindow):
         btn_list = self.ui.icon_only.findChildren(QPushButton) \
                    + self.ui.full_menu.findChildren(QPushButton)
         for btn in btn_list:
-            if index in [5, 6]:
+            if index in [4, 5]:
                 btn.setAutoExclusive(False)
                 btn.setChecked(False)
             else:
@@ -65,29 +64,17 @@ class AdminWindow(QMainWindow):
     def on_home_btn_2(self):
         self.ui.stackedWidget.setCurrentIndex(0)
 
-    def on_dashboard_btn_1(self):
-        self.ui.stackedWidget.setCurrentIndex(1)
-
-    def on_dashboard_btn_2(self):
-        self.ui.stackedWidget.setCurrentIndex(1)
-
     def on_product_btn_1(self):
-        self.ui.stackedWidget.setCurrentIndex(2)
+        self.ui.stackedWidget.setCurrentIndex(1)
 
     def on_product_btn_2(self):
-        self.ui.stackedWidget.setCurrentIndex(2)
-
-    def on_cart_btn_1(self):
-        self.ui.stackedWidget.setCurrentIndex(3)
-
-    def on_cart_btn_2(self):
-        self.ui.stackedWidget.setCurrentIndex(3)
+        self.ui.stackedWidget.setCurrentIndex(1)
 
     def on_customer_btn_1(self):
-        self.ui.stackedWidget.setCurrentIndex(4)
+        self.ui.stackedWidget.setCurrentIndex(2)
 
     def on_customer_btn_2(self):
-        self.ui.stackedWidget.setCurrentIndex(4)
+        self.ui.stackedWidget.setCurrentIndex(2)
 
 
 if __name__ == "__main__":
