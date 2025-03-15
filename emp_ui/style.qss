@@ -43,7 +43,7 @@
 	}
 
     /* style for QPushButton and QLabel */
-	#icon_only QPushButton, QLabel {
+	#icon_only QPushButton {
 		height: 50px;
 		border: none;
 		color: #fff;
@@ -97,14 +97,12 @@
 	/* style for logo image */
 	#logo_2 {
 		padding: 5px;
-		color: #fff;
 		font-size: 18px;
 		font-weight: bold;
 	}
 
 	#logo_3 {
 		padding-right: 10px;
-		color: #fff;
 		font-size: 14px;
 	}
 /*= END
@@ -133,13 +131,11 @@
 		padding: 5px 10px;
 		border-radius: 5px;
 		background-color: #f9f9f9;
-		box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.1);
 	}
 
 	#Search_input:focus {
 		background-color: #D3D3D3;
 		border-radius: 5px;
-		box-shadow: 0px 0px 5px rgba(0, 123, 255, 0.5);
 	}
 /*= END
   ==================================================== */

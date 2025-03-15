@@ -43,7 +43,7 @@
 	}
 
     /* style for QPushButton and QLabel */
-	#icon_only QPushButton, QLabel {
+	#icon_only QPushButton{
 		height: 50px;
 		border: none;
 		color: #fff;

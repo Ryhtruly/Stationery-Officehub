@@ -41,8 +41,9 @@ class AdminWindow(QMainWindow):
     def on_search_btn_clicked(self):
         self.ui.stackedWidget.setCurrentIndex(4)
         search_text = self.ui.lineEdit.text().strip()
-        if search_text:
-            self.ui.pushButton_6.setText(search_text)
+        if hasattr(self.ui, 'search_output'):
+            self.ui.search_output.setText(f" {search_text}")
+
 
     def on_user_btn_clicked(self):
         self.ui.stackedWidget.setCurrentIndex(5)

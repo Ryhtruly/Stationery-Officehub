@@ -1,0 +1,590 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>them_sp_window</class>
+ <widget class="QMainWindow" name="them_sp_window">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <weight>75</weight>
+    <bold>true</bold>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">#them_sp_window {
+border-radius :5px;
+		background-color: #fff;
+
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="label_header">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>801</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Poppins,sans-serif</family>
+      <pointsize>9</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color : #fff;
+background-color : #313a46;
+font-family: &quot;Poppins&quot;, sans-serif;
+border-radius : 5px
+</string>
+    </property>
+    <property name="text">
+     <string>       THÊM SẢN PHẨM</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_8">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>60</y>
+      <width>271</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>13</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color : #EE4D2D;</string>
+    </property>
+    <property name="text">
+     <string>Thêm chi tiết sản phẩm</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QWidget" name="widget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>120</y>
+      <width>721</width>
+      <height>441</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#widget {
+
+background-color: #f0f2f5;
+border-radius : 10px;
+}
+</string>
+    </property>
+    <widget class="QPushButton" name="pushButton">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>370</y>
+       <width>93</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>9</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: 1px solid white;
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 9pt;
+}
+
+/* Khi di chuột vào */
+QPushButton:hover {
+    background-color: rgba(33, 150, 243, 0.8); /* Xanh nước biển nhạt */
+    border: 1px solid #2196F3; /* Viền xanh nước biển */
+}
+
+/* Khi nhấn */
+QPushButton:pressed {
+    background-color: rgba(25, 118, 210, 1); /* Xanh nước biển đậm */
+    border: 1px solid white;
+}
+</string>
+     </property>
+     <property name="text">
+      <string>Thêm </string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_2">
+     <property name="geometry">
+      <rect>
+       <x>250</x>
+       <y>370</y>
+       <width>93</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Hủy</string>
+     </property>
+    </widget>
+    <widget class="QWidget" name="">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>200</y>
+       <width>321</width>
+       <height>35</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <property name="spacing">
+       <number>35</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="label_4">
+        <property name="minimumSize">
+         <size>
+          <width>64</width>
+          <height>31</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Số lượng : </string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="lineEdit_4">
+        <property name="minimumSize">
+         <size>
+          <width>211</width>
+          <height>31</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLineEdit {
+    background-color: rgba(0,0,0,0);
+    border: 2px solid #313a46; /* Viền mặc định */
+    color: #313a46; /* Màu chữ mặc định */
+    padding: 5px;
+    border-radius: 5px;
+}
+
+/* Khi focus (nhấn vào) */
+QLineEdit:focus {
+    border: 2px solid #1C86EE; /* Viền xanh nước biển đậm hơn */
+    color: #1C86EE; /* Chữ chuyển sang xanh nước biển đậm */
+}
+
+/* Khi di chuột vào */
+QLineEdit:hover {
+    border: 2px solid #1C86EE; /* Viền xanh nước biển đậm hơn khi hover */
+}
+</string>
+        </property>
+        <property name="placeholderText">
+         <string>Số lượng...</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="">
+     <property name="geometry">
+      <rect>
+       <x>390</x>
+       <y>300</y>
+       <width>311</width>
+       <height>33</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <property name="spacing">
+       <number>14</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="label_5">
+        <property name="minimumSize">
+         <size>
+          <width>57</width>
+          <height>31</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Đơn giá : </string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="lineEdit_5">
+        <property name="minimumSize">
+         <size>
+          <width>211</width>
+          <height>31</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLineEdit {
+    background-color: rgba(0,0,0,0);
+    border: 2px solid #313a46; /* Viền mặc định */
+    color: #313a46; /* Màu chữ mặc định */
+    padding: 5px;
+    border-radius: 5px;
+}
+
+/* Khi focus (nhấn vào) */
+QLineEdit:focus {
+    border: 2px solid #1C86EE; /* Viền xanh nước biển đậm hơn */
+    color: #1C86EE; /* Chữ chuyển sang xanh nước biển đậm */
+}
+
+/* Khi di chuột vào */
+QLineEdit:hover {
+    border: 2px solid #1C86EE; /* Viền xanh nước biển đậm hơn khi hover */
+}
+</string>
+        </property>
+        <property name="placeholderText">
+         <string>Đơn giá...</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>40</y>
+       <width>671</width>
+       <height>35</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_4">
+      <item>
+       <widget class="QLabel" name="label_2">
+        <property name="minimumSize">
+         <size>
+          <width>95</width>
+          <height>31</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Tên sản phẩm : </string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="lineEdit_2">
+        <property name="minimumSize">
+         <size>
+          <width>211</width>
+          <height>31</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLineEdit {
+    background-color: rgba(0,0,0,0);
+    border: 2px solid #313a46; /* Viền mặc định */
+    color: #313a46; /* Màu chữ mặc định */
+    padding: 5px;
+    border-radius: 5px;
+}
+
+/* Khi focus (nhấn vào) */
+QLineEdit:focus {
+    border: 2px solid #1C86EE; /* Viền xanh nước biển đậm hơn */
+    color: #1C86EE; /* Chữ chuyển sang xanh nước biển đậm */
+}
+
+/* Khi di chuột vào */
+QLineEdit:hover {
+    border: 2px solid #1C86EE; /* Viền xanh nước biển đậm hơn khi hover */
+}
+</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="placeholderText">
+         <string>Tên sản phẩm...</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="">
+     <property name="geometry">
+      <rect>
+       <x>390</x>
+       <y>200</y>
+       <width>311</width>
+       <height>33</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_7">
+      <property name="spacing">
+       <number>31</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="label_7">
+        <property name="minimumSize">
+         <size>
+          <width>41</width>
+          <height>31</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Mô tả :</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="lineEdit_7">
+        <property name="minimumSize">
+         <size>
+          <width>211</width>
+          <height>31</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLineEdit {
+    background-color: rgba(0,0,0,0);
+    border: 2px solid #313a46; /* Viền mặc định */
+    color: #313a46; /* Màu chữ mặc định */
+    padding: 5px;
+    border-radius: 5px;
+}
+
+/* Khi focus (nhấn vào) */
+QLineEdit:focus {
+    border: 2px solid #1C86EE; /* Viền xanh nước biển đậm hơn */
+    color: #1C86EE; /* Chữ chuyển sang xanh nước biển đậm */
+}
+
+/* Khi di chuột vào */
+QLineEdit:hover {
+    border: 2px solid #1C86EE; /* Viền xanh nước biển đậm hơn khi hover */
+}
+</string>
+        </property>
+        <property name="placeholderText">
+         <string>Mô tả...</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>300</y>
+       <width>321</width>
+       <height>33</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <property name="spacing">
+       <number>41</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="label_6">
+        <property name="minimumSize">
+         <size>
+          <width>55</width>
+          <height>31</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Giá vốn : </string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="lineEdit_6">
+        <property name="minimumSize">
+         <size>
+          <width>211</width>
+          <height>31</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLineEdit {
+    background-color: rgba(0,0,0,0);
+    border: 2px solid #313a46; /* Viền mặc định */
+    color: #313a46; /* Màu chữ mặc định */
+    padding: 5px;
+    border-radius: 5px;
+}
+
+/* Khi focus (nhấn vào) */
+QLineEdit:focus {
+    border: 2px solid #1C86EE; /* Viền xanh nước biển đậm hơn */
+    color: #1C86EE; /* Chữ chuyển sang xanh nước biển đậm */
+}
+
+/* Khi di chuột vào */
+QLineEdit:hover {
+    border: 2px solid #1C86EE; /* Viền xanh nước biển đậm hơn khi hover */
+}
+</string>
+        </property>
+        <property name="placeholderText">
+         <string>Giá vốn...</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="">
+     <property name="geometry">
+      <rect>
+       <x>390</x>
+       <y>120</y>
+       <width>311</width>
+       <height>33</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_6">
+      <property name="spacing">
+       <number>11</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="label_3">
+        <property name="minimumSize">
+         <size>
+          <width>63</width>
+          <height>31</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Hình ảnh : </string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="lineEdit_3">
+        <property name="minimumSize">
+         <size>
+          <width>211</width>
+          <height>31</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLineEdit {
+    background-color: rgba(0,0,0,0);
+    border: 2px solid #313a46; /* Viền mặc định */
+    color: #313a46; /* Màu chữ mặc định */
+    padding: 5px;
+    border-radius: 5px;
+}
+
+/* Khi focus (nhấn vào) */
+QLineEdit:focus {
+    border: 2px solid #1C86EE; /* Viền xanh nước biển đậm hơn */
+    color: #1C86EE; /* Chữ chuyển sang xanh nước biển đậm */
+}
+
+/* Khi di chuột vào */
+QLineEdit:hover {
+    border: 2px solid #1C86EE; /* Viền xanh nước biển đậm hơn khi hover */
+}
+</string>
+        </property>
+        <property name="placeholderText">
+         <string>Tên hình ảnh..</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>120</y>
+       <width>321</width>
+       <height>35</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_5">
+      <property name="spacing">
+       <number>76</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>ID : </string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="lineEdit">
+        <property name="minimumSize">
+         <size>
+          <width>211</width>
+          <height>31</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLineEdit {
+    background-color: rgba(0,0,0,0);
+    border: 2px solid #313a46; /* Viền mặc định */
+    color: #313a46; /* Màu chữ mặc định */
+    padding: 5px;
+    border-radius: 5px;
+}
+
+/* Khi focus (nhấn vào) */
+QLineEdit:focus {
+    border: 2px solid #1C86EE; /* Viền xanh nước biển đậm hơn */
+    color: #1C86EE; /* Chữ chuyển sang xanh nước biển đậm */
+}
+
+/* Khi di chuột vào */
+QLineEdit:hover {
+    border: 2px solid #1C86EE; /* Viền xanh nước biển đậm hơn khi hover */
+}
+</string>
+        </property>
+        <property name="placeholderText">
+         <string>ID...</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -13,6 +13,11 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">#MainWindow {
+		background-color: #fff;
+	}</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
     <property name="leftMargin">
@@ -189,7 +194,12 @@
            <property name="font">
             <font>
              <pointsize>12</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
             </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color : #fff</string>
            </property>
            <property name="text">
             <string>OFFICEHUB  </string>
@@ -429,6 +439,9 @@
        </item>
        <item>
         <widget class="QStackedWidget" name="stackedWidget">
+         <property name="currentIndex">
+          <number>4</number>
+         </property>
          <widget class="QWidget" name="home_widget">
           <layout class="QGridLayout" name="gridLayout_3">
            <item row="0" column="1">
@@ -439,7 +452,7 @@
              <property name="sizeHint" stdset="0">
               <size>
                <width>20</width>
-               <height>37</height>
+               <height>24</height>
               </size>
              </property>
             </spacer>
@@ -451,67 +464,87 @@
              </property>
              <property name="sizeHint" stdset="0">
               <size>
-               <width>45</width>
+               <width>27</width>
                <height>20</height>
               </size>
              </property>
             </spacer>
            </item>
            <item row="1" column="1">
-            <layout class="QGridLayout" name="gridLayout_2">
-             <item row="0" column="0" colspan="3">
-              <widget class="QWidget" name="widget_2" native="true">
-               <property name="minimumSize">
-                <size>
-                 <width>709</width>
-                 <height>306</height>
-                </size>
+            <layout class="QVBoxLayout" name="verticalLayout_6">
+             <item>
+              <widget class="QLabel" name="label_7">
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
                </property>
-               <property name="styleSheet">
-                <string notr="true">border-image: url(:/icons/icon/2069577.jpg);
+               <property name="text">
+                <string>OFFICEHUB - CỬA HÀNG VĂN PHÒNG PHẨM</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <layout class="QGridLayout" name="gridLayout_2">
+               <item row="0" column="0" colspan="3">
+                <widget class="QWidget" name="widget_2" native="true">
+                 <property name="minimumSize">
+                  <size>
+                   <width>709</width>
+                   <height>306</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">border-image: url(:/icons/icon/2069577.jpg);
 border-radius : 10px;</string>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="0">
-              <widget class="QWidget" name="widget_4" native="true">
-               <property name="minimumSize">
-                <size>
-                 <width>232</width>
-                 <height>306</height>
-                </size>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">border-image: url(:/icons/icon/542136743259c1e91c1d385eff4f5ca1.jfif);
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QWidget" name="widget_4" native="true">
+                 <property name="minimumSize">
+                  <size>
+                   <width>232</width>
+                   <height>306</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">border-image: url(:/icons/icon/542136743259c1e91c1d385eff4f5ca1.jfif);
 border-radius : 10px;</string>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="1">
-              <widget class="QWidget" name="widget_5" native="true">
-               <property name="minimumSize">
-                <size>
-                 <width>231</width>
-                 <height>306</height>
-                </size>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">border-image: url(:/icons/icon/H2C5xJgEUPZ4HsY2ouNCGQ.jpg);</string>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="2">
-              <widget class="QWidget" name="widget_6" native="true">
-               <property name="minimumSize">
-                <size>
-                 <width>232</width>
-                 <height>306</height>
-                </size>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">border-image: url(:/icons/icon/e2948946e4e38b103135e053b191-1445875.jpg!d);</string>
-               </property>
-              </widget>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1">
+                <widget class="QWidget" name="widget_5" native="true">
+                 <property name="minimumSize">
+                  <size>
+                   <width>231</width>
+                   <height>306</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">border-image: url(:/icons/icon/H2C5xJgEUPZ4HsY2ouNCGQ.jpg);
+border-radius : 10px;</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="2">
+                <widget class="QWidget" name="widget_6" native="true">
+                 <property name="minimumSize">
+                  <size>
+                   <width>232</width>
+                   <height>306</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">border-image: url(:/icons/icon/ea5cad1ec37576cf0c4ee86eb0a9-1445877.jpg!d);
+border-radius: 10px</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
              </item>
             </layout>
            </item>
@@ -522,7 +555,7 @@ border-radius : 10px;</string>
              </property>
              <property name="sizeHint" stdset="0">
               <size>
-               <width>44</width>
+               <width>16</width>
                <height>20</height>
               </size>
              </property>
@@ -536,7 +569,7 @@ border-radius : 10px;</string>
              <property name="sizeHint" stdset="0">
               <size>
                <width>20</width>
-               <height>40</height>
+               <height>23</height>
               </size>
              </property>
             </spacer>
@@ -568,7 +601,7 @@ border-radius : 10px;</string>
            </property>
           </widget>
          </widget>
-         <widget class="QWidget" name="cart_widget">
+         <widget class="QWidget" name="customer">
           <widget class="QPushButton" name="pushButton_3">
            <property name="geometry">
             <rect>
@@ -579,8 +612,41 @@ border-radius : 10px;</string>
             </rect>
            </property>
            <property name="text">
-            <string>Cart</string>
+            <string>cusstomer</string>
            </property>
+          </widget>
+          <widget class="QWidget" name="layoutWidget">
+           <property name="geometry">
+            <rect>
+             <x>60</x>
+             <y>80</y>
+             <width>181</width>
+             <height>18</height>
+            </rect>
+           </property>
+           <layout class="QHBoxLayout" name="horizontalLayout_4">
+            <item>
+             <widget class="QLabel" name="label_4">
+              <property name="text">
+               <string>TextLabel</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_5">
+              <property name="text">
+               <string>TextLabel</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_6">
+              <property name="text">
+               <string>TextLabel</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </widget>
          </widget>
          <widget class="QWidget" name="customer_widget">
@@ -599,19 +665,234 @@ border-radius : 10px;</string>
           </widget>
          </widget>
          <widget class="QWidget" name="search_widget">
-          <widget class="QPushButton" name="pushButton_6">
+          <widget class="QLabel" name="label_8">
            <property name="geometry">
             <rect>
-             <x>360</x>
-             <y>230</y>
-             <width>391</width>
-             <height>251</height>
+             <x>60</x>
+             <y>30</y>
+             <width>181</width>
+             <height>41</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>8</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Các sản phẩm liên quan đến : </string>
+           </property>
+          </widget>
+          <widget class="QLabel" name="search_output">
+           <property name="geometry">
+            <rect>
+             <x>240</x>
+             <y>30</y>
+             <width>141</width>
+             <height>41</height>
+            </rect>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>141</width>
+             <height>41</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+          <widget class="QLabel" name="label_11">
+           <property name="geometry">
+            <rect>
+             <x>310</x>
+             <y>220</y>
+             <width>131</width>
+             <height>31</height>
             </rect>
            </property>
            <property name="text">
-            <string>Search</string>
+            <string/>
            </property>
           </widget>
+          <widget class="QWidget" name="">
+           <property name="geometry">
+            <rect>
+             <x>100</x>
+             <y>100</y>
+             <width>140</width>
+             <height>190</height>
+            </rect>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_7">
+            <item>
+             <widget class="QWidget" name="widget_8" native="true">
+              <property name="minimumSize">
+               <size>
+                <width>131</width>
+                <height>120</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">border-image: url(:/icons/icon/but-long-dau-thien-long-pm09_3-scaled.jpg);
+border-radius: 5px;</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_5">
+              <item>
+               <widget class="QPushButton" name="pushButton_2">
+                <property name="minimumSize">
+                 <size>
+                  <width>31</width>
+                  <height>31</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset resource="resource.qrc">
+                  <normaloff>:/icons/icon/cart-59-xl (1).png</normaloff>:/icons/icon/cart-59-xl (1).png</iconset>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_10">
+                <property name="minimumSize">
+                 <size>
+                  <width>91</width>
+                  <height>31</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">		background-color: #313a46;
+	color: white;</string>
+                </property>
+                <property name="text">
+                 <string>18.000 vnđ</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_12">
+              <property name="minimumSize">
+               <size>
+                <width>131</width>
+                <height>21</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>MP09 - Bút lông cao cấp</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+           <zorder>label_12</zorder>
+          </widget>
+          <widget class="QWidget" name="">
+           <property name="geometry">
+            <rect>
+             <x>310</x>
+             <y>100</y>
+             <width>146</width>
+             <height>190</height>
+            </rect>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_8">
+            <item>
+             <widget class="QWidget" name="widget_9" native="true">
+              <property name="minimumSize">
+               <size>
+                <width>131</width>
+                <height>120</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">border-image: url(:/icons/icon/but-long-dau-cd-flexoffice-fo-pm01-1.webp);</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_6">
+              <item>
+               <widget class="QPushButton" name="pushButton_6">
+                <property name="minimumSize">
+                 <size>
+                  <width>31</width>
+                  <height>31</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset resource="resource.qrc">
+                  <normaloff>:/icons/icon/cart-59-xl (1).png</normaloff>:/icons/icon/cart-59-xl (1).png</iconset>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_13">
+                <property name="minimumSize">
+                 <size>
+                  <width>91</width>
+                  <height>31</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">		background-color: #313a46;
+	color: white;</string>
+                </property>
+                <property name="text">
+                 <string>50.000 vnđ</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_14">
+              <property name="minimumSize">
+               <size>
+                <width>131</width>
+                <height>21</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>AC03 - Combo 3 bút lông</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+           <zorder>label_14</zorder>
+          </widget>
+          <zorder>widget_8</zorder>
+          <zorder>widget_9</zorder>
+          <zorder>search_output</zorder>
+          <zorder>label_10</zorder>
+          <zorder>label_11</zorder>
+          <zorder>label_12</zorder>
+          <zorder>pushButton_2</zorder>
+          <zorder>label_13</zorder>
+          <zorder>pushButton_6</zorder>
+          <zorder>label_14</zorder>
+          <zorder>label_8</zorder>
          </widget>
          <widget class="QWidget" name="page_6">
           <widget class="QPushButton" name="pushButton_11">
