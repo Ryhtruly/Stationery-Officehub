@@ -59,6 +59,9 @@ class AdminWindow(QMainWindow):
         self.ui.table_nhap.setColumnWidth(3,150)
         self.ui.table_nhap.setColumnWidth(4,150)
         self.ui.table_nhap.setColumnWidth(5,130)
+        self.ui.table_khuyenmai.setColumnWidth(0,100)
+        self.ui.table_khuyenmai.setColumnWidth(1, 250)
+        self.ui.table_khuyenmai.setColumnWidth(4, 150)
 
 
         load_data_to_table(self.ui.table_sanpham)
@@ -68,8 +71,10 @@ class AdminWindow(QMainWindow):
         load_employee_data(self.ui.table_nhanvien)
         load_data_to_search_table(self.ui.table_search)
         load_data_to_table_nhap(self.ui.table_nhap)
+        load_data_to_table_khuyenmai(self.ui.table_khuyenmai)
 
         self.ui.table_sanpham.verticalHeader().setVisible(False)
+        self.ui.table_khuyenmai.verticalHeader().setVisible(False)
         self.ui.table_danhmuc.verticalHeader().setVisible(False)
         self.ui.tb_kho_1.verticalHeader().setVisible(False)
         self.ui.tb_kho_2.verticalHeader().setVisible(False)
@@ -253,6 +258,50 @@ def load_data_to_table(table):
 
         # Thêm widget vào cột "Chỉnh sửa"
         table.setCellWidget(row, 6, widget)
+
+def load_data_to_table_khuyenmai(table):
+    # Cập nhật dữ liệu khuyến mãi (5 dòng, năm 2025, tên mới)
+    data = [
+        (17, "Giảm giá đặc biệt", "07-01-2025", "07-02-2025", "Đang diễn ra"),
+        (23, "Flash Sale", "09-02-2025", "09-03-2025", "Sắp diễn ra"),
+        (24, "Ưu đãi khách hàng VIP", "10-03-2025", "12-04-2025", "Đang diễn ra"),
+        (25, "Mua 1 tặng 1", "11-04-2025", "11-05-2025", "Sắp diễn ra"),
+        (27, "Khuyến mãi hè", "12-05-2025", "13-06-2025", "Sắp diễn ra"),
+    ]
+
+    table.setRowCount(len(data))  # Đặt số dòng
+    table.setColumnCount(6)  # Số cột: ID, Tên KM, Từ ngày, Đến ngày, Trạng thái, Chỉnh sửa
+    table.setHorizontalHeaderLabels(["ID", "Tên khuyến mãi", "Từ ngày", "Đến ngày", "Trạng thái", "Chỉnh sửa"])
+
+    for row, (id_, name, start_date, end_date, status) in enumerate(data):
+        table.setItem(row, 0, QTableWidgetItem(str(id_)))  # ID
+        table.setItem(row, 1, QTableWidgetItem(name))  # Tên KM
+        table.setItem(row, 2, QTableWidgetItem(start_date))  # Từ ngày
+        table.setItem(row, 3, QTableWidgetItem(end_date))  # Đến ngày
+        table.setItem(row, 4, QTableWidgetItem(status))  # Trạng thái
+
+        # Tạo widget chứa hai nút
+        widget = QWidget()
+        layout = QHBoxLayout()
+        layout.setContentsMargins(5, 2, 5, 2)
+
+        # Nút Sửa
+        btn_edit = QPushButton("Sửa")
+        btn_edit.setStyleSheet("background-color: #2196F3; color: white; border-radius: 5px; padding: 2px;")
+        btn_edit.clicked.connect(lambda _, r=row: edit_item(r))
+
+        # Nút Xóa
+        btn_delete = QPushButton("Xóa")
+        btn_delete.setStyleSheet("background-color: #FF5722; color: white; border-radius: 5px; padding: 2px;")
+        btn_delete.clicked.connect(lambda _, r=row: delete_item(table, r))
+
+        # Thêm vào layout
+        layout.addWidget(btn_edit)
+        layout.addWidget(btn_delete)
+        widget.setLayout(layout)
+
+        # Thêm widget vào cột "Chỉnh sửa"
+        table.setCellWidget(row, 5, widget)
 
 def load_data_to_search_table(table):
     data = [
