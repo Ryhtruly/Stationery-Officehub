@@ -84,7 +84,7 @@ def load_data_to_customer_tb(table):
 
             # Nút Sửa
             btn_edit = QPushButton("Sửa")
-            btn_edit.setStyleSheet("background-color: #4CAF50; color: white;")
+            btn_edit.setStyleSheet("background-color: #2196F3; color: white; border-radius: 5px; padding: 2px;")
             btn_edit.clicked.connect(lambda checked, row=table, cid=customer.id_cust: edit_item(row, cid))
             layout.addWidget(btn_edit)
 

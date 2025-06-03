@@ -390,7 +390,7 @@ class EmployeeWindow(QtWidgets.QMainWindow):
 
         self.ui.table_bill.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Interactive)
         self.ui.table_bill.horizontalHeader().setStretchLastSection(True)
-        set_column_ratios(self.ui.table_bill, [0.05, 0.31, 0.12, 0.12, 0.18, 0.22])
+        set_column_ratios(self.ui.table_bill, [0.05, 0.31, 0.17, 0.17, 0.18, 0.12])
         self.ui.table_bill.verticalHeader().setVisible(False)
         self.ui.table_bill.viewport().installEventFilter(self)
 

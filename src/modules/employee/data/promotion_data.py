@@ -37,6 +37,7 @@ def load_promotion_data(table, parent=None):
             table.setItem(row_position, 4, QTableWidgetItem("Đang diễn ra"))
 
             detail_button = QPushButton('Xem chi tiết')
+            detail_button.setStyleSheet("background-color: #2196F3; color: white; border-radius: 5px; padding: 2px;")
             detail_button.clicked.connect(
                 lambda _, r=row_position, id=promotion.id_prom: view_promotion_details(id, parent))
 

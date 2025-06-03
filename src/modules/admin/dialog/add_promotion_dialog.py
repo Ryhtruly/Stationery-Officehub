@@ -1,12 +1,12 @@
 from PyQt5 import QtWidgets, QtCore, QtGui
 from PyQt5.QtWidgets import QMessageBox, QTableWidgetItem, QCheckBox, QDoubleSpinBox, QHBoxLayout, QWidget
-
 from src.database.connection import create_connection
 from src.modules.admin.ui.ui_py.add_promotion import Ui_Form
 from src.database.DAO.admin.CategoryDAO import CategoryDAO
 from src.database.DAO.admin.PromotionDAO import KhuyenMaiDAO
 from datetime import datetime
 import traceback
+import re
 
 from src.database.models.promotion import Promotion
 
@@ -202,10 +202,45 @@ class AddPromotionDialog(QtWidgets.QDialog):
             print(f"Lỗi khi tải chi tiết khuyến mãi: {str(e)}")
             traceback.print_exc()
 
+    def validate_promotion(self, id_prom, name):
+        """Validate dữ liệu khuyến mãi trước khi lưu"""
+        # Kiểm tra ID không âm
+        try:
+            id_prom = int(id_prom)
+            if id_prom < 0:
+                QMessageBox.warning(self, "Lỗi", "ID khuyến mãi không được âm.")
+                return False
+        except ValueError:
+            QMessageBox.warning(self, "Lỗi", "ID khuyến mãi phải là số nguyên.")
+            return False
+
+        # Kiểm tra tên không chứa ký tự đặc biệt
+        if not re.match(r'^[a-zA-Z0-9\s-]+$', name):
+            QMessageBox.warning(self, "Lỗi", "Tên khuyến mãi chỉ được chứa chữ, số, dấu cách và dấu gạch ngang.")
+            return False
+
+        # Kiểm tra tên trùng
+        try:
+            connection = create_connection()
+            cursor = connection.cursor()
+            if self.promotion_id:
+                cursor.execute("SELECT COUNT(*) FROM Promotion WHERE LOWER(name) = LOWER(?) AND id_prom != ?",
+                             (name, self.promotion_id))
+            else:
+                cursor.execute("SELECT COUNT(*) FROM Promotion WHERE LOWER(name) = LOWER(?)", (name,))
+            count = cursor.fetchone()[0]
+            cursor.close()
+            connection.close()
+            if count > 0:
+                QMessageBox.warning(self, "Lỗi", f"Tên khuyến mãi '{name}' đã tồn tại.")
+                return False
+        except Exception as e:
+            QMessageBox.critical(self, "Lỗi", f"Lỗi kiểm tra trùng tên khuyến mãi: {str(e)}")
+            return False
+
+        return True
+
     def add_promotion(self):
-        """
-        Lưu thông tin khuyến mãi vào database
-        """
         try:
             id_prom_text = self.ui.input_Id_khuyenmai.text().strip()
             promotion_name = self.ui.input_ten_khuyenmai.text().strip()
@@ -216,11 +251,6 @@ class AddPromotionDialog(QtWidgets.QDialog):
             if not id_prom_text:
                 QMessageBox.warning(self, "Lỗi", "ID khuyến mãi không được để trống.")
                 return
-            try:
-                id_prom = int(id_prom_text)
-            except ValueError:
-                QMessageBox.warning(self, "Lỗi", "ID khuyến mãi phải là số nguyên.")
-                return
             if not promotion_name:
                 QMessageBox.warning(self, "Lỗi", "Tên khuyến mãi không được để trống.")
                 return
@@ -228,6 +258,10 @@ class AddPromotionDialog(QtWidgets.QDialog):
             end_date_obj = datetime.strptime(end_date, "%Y-%m-%d")
             if end_date_obj < start_date_obj:
                 QMessageBox.warning(self, "Lỗi", "Ngày kết thúc không được nhỏ hơn ngày bắt đầu!")
+                return
+
+            # Validate bổ sung
+            if not self.validate_promotion(id_prom_text, promotion_name):
                 return
 
             has_selected_category = False
@@ -242,17 +276,17 @@ class AddPromotionDialog(QtWidgets.QDialog):
             if self.promotion_id is None:
                 connection = create_connection()
                 cursor = connection.cursor()
-                cursor.execute("SELECT COUNT(*) FROM Promotion WHERE id_prom = ?", (id_prom,))
+                cursor.execute("SELECT COUNT(*) FROM Promotion WHERE id_prom = ?", (id_prom_text,))
                 count = cursor.fetchone()[0]
                 cursor.close()
                 connection.close()
                 if count > 0:
-                    QMessageBox.warning(self, "Lỗi", f"ID khuyến mãi {id_prom} đã tồn tại.")
+                    QMessageBox.warning(self, "Lỗi", f"ID khuyến mãi {id_prom_text} đã tồn tại.")
                     return
 
             # Tạo đối tượng khuyến mãi
             promotion = Promotion(
-                id_prom=id_prom,
+                id_prom=int(id_prom_text),
                 name=promotion_name,
                 start_date=start_date_obj,
                 end_date=end_date_obj,

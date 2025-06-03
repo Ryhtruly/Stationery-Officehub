@@ -125,7 +125,7 @@ QLineEdit:focus {
 }</string>
             </property>
             <property name="placeholderText">
-             <string>ID Nhân viên...</string>
+             <string>ID Khách hàng...</string>
             </property>
            </widget>
           </item>

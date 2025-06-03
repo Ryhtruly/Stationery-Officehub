@@ -11,8 +11,5 @@ matplotlib==3.7.2
 # Xuất file PDF
 reportlab==4.0.4
 
-# Xử lý hình ảnh
-opencv-python==4.8.0.74
-
 # Kết nối mạng
 requests==2.31.0

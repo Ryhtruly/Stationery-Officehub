@@ -282,6 +282,7 @@ class AddImportDialog(QtWidgets.QDialog):
                 layout.addWidget(delete_btn)
                 widget.setLayout(layout)
                 self.ui.table_san_pham_pn.setCellWidget(row, 7, widget)
+                self.ui.table_san_pham_pn.setAlternatingRowColors(False)
 
                 self.update_total_amount()
 

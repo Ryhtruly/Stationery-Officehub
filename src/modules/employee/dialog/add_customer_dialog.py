@@ -1,4 +1,5 @@
 from PyQt5 import QtWidgets
+import re
 
 from src.database.connection import create_connection
 from src.database.models.customer import KhachHang
@@ -30,30 +31,32 @@ class AddCustomerDialog(QtWidgets.QDialog):
                 self.ui.line_id.setReadOnly(True)
                 self.ui.line_id.setEnabled(False)
             self.load_customer_data()
+        else:
+            self.generate_new_id()
 
-    def add_customer(self):
+    def generate_new_id(self):
+        """
+        Tự động tạo ID mới cho khách hàng bằng cách lấy ID lớn nhất hiện tại và tăng thêm 1
+        """
         try:
-            id_cust = self.ui.line_id.text().strip()
-            fullname = self.ui.line_name.text().strip()
-            phone = self.ui.line_phoneNum.text().strip()
+            connection = create_connection()
+            cursor = connection.cursor()
 
-            if not fullname:
-                QMessageBox.warning(self, "Cảnh báo", "Vui lòng nhập tên khách hàng!")
-                return
+            cursor.execute("SELECT MAX(id_cust) FROM Customers")
+            max_id = cursor.fetchone()[0]
 
-            if not phone:
-                QMessageBox.warning(self, "Cảnh báo", "Vui lòng nhập số điện thoại!")
-                return
+            if max_id is None:
+                new_id = 1
+            else:
+                new_id = max_id + 1
 
-            id_cust = int(id_cust) if id_cust and id_cust.isdigit() else None
+            self.ui.line_id.setText(str(new_id))
 
-            CustomerDAO.add_customer(fullname, phone, id_cust)
-
-            QMessageBox.information(self, "Thông báo", "Thêm khách hàng thành công!")
-            self.accept()
+            cursor.close()
+            connection.close()
 
         except Exception as e:
-            QMessageBox.critical(self, "Lỗi", f"Không thể thêm khách hàng mới: {str(e)}")
+            QMessageBox.critical(self, "Lỗi", f"Không thể tạo ID mới cho khách hàng: {str(e)}")
 
     def load_customer_data(self):
         """
@@ -65,16 +68,59 @@ class AddCustomerDialog(QtWidgets.QDialog):
             if customer:
                 if hasattr(self.ui, "line_id"):
                     self.ui.line_id.setText(str(customer.id_cust))
-
                 if hasattr(self.ui, "line_name"):
                     self.ui.line_name.setText(customer.fullname)
-
                 if hasattr(self.ui, "line_phoneNum"):
                     self.ui.line_phoneNum.setText(customer.phone)
             else:
                 QMessageBox.warning(self, "Cảnh báo", "Không tìm thấy thông tin khách hàng!")
         except Exception as e:
             QMessageBox.critical(self, "Lỗi", f"Không thể load thông tin khách hàng: {str(e)}")
+
+    def validate_customer(self, fullname, phone):
+        """Validate dữ liệu khách hàng trước khi lưu"""
+        # Kiểm tra tên không chứa số hoặc ký tự đặc biệt (chỉ cần không có số là được)
+        if any(char.isdigit() for char in fullname):
+            QMessageBox.warning(self, "Cảnh báo", "Tên khách hàng không được chứa số!")
+            return False
+
+        # Kiểm tra trùng tên khách hàng (không phân biệt hoa/thường)
+        try:
+            connection = create_connection()
+            cursor = connection.cursor()
+            if self.customer_id:
+                cursor.execute("SELECT COUNT(*) FROM Customers WHERE LOWER(fullname) = LOWER(?) AND id_cust != ?", (fullname, self.customer_id))
+            else:
+                cursor.execute("SELECT COUNT(*) FROM Customers WHERE LOWER(fullname) = LOWER(?)", (fullname,))
+            count = cursor.fetchone()[0]
+            cursor.close()
+            connection.close()
+            if count > 0:
+                QMessageBox.warning(self, "Cảnh báo", f"Tên khách hàng '{fullname}' đã tồn tại!")
+                return False
+        except Exception as e:
+            QMessageBox.critical(self, "Lỗi", f"Lỗi kiểm tra trùng tên khách hàng: {str(e)}")
+            return False
+
+        # Kiểm tra trùng số điện thoại
+        try:
+            connection = create_connection()
+            cursor = connection.cursor()
+            if self.customer_id:
+                cursor.execute("SELECT COUNT(*) FROM Customers WHERE phone = ? AND id_cust != ?", (phone, self.customer_id))
+            else:
+                cursor.execute("SELECT COUNT(*) FROM Customers WHERE phone = ?", (phone,))
+            count = cursor.fetchone()[0]
+            cursor.close()
+            connection.close()
+            if count > 0:
+                QMessageBox.warning(self, "Cảnh báo", f"Số điện thoại '{phone}' đã được đăng ký! Vui lòng sử dụng số khác.")
+                return False
+        except Exception as e:
+            QMessageBox.critical(self, "Lỗi", f"Lỗi kiểm tra trùng số điện thoại: {str(e)}")
+            return False
+
+        return True
 
     def save_customer(self):
         """
@@ -85,12 +131,16 @@ class AddCustomerDialog(QtWidgets.QDialog):
             fullname = self.ui.line_name.text().strip()
             phone = self.ui.line_phoneNum.text().strip()
 
+            # Validate cơ bản
             if not id_cust_text and not self.customer_id:
                 QMessageBox.warning(self, "Cảnh báo", "ID khách hàng không được để trống!")
                 return
             if not self.customer_id:
                 try:
                     id_cust = int(id_cust_text)
+                    if id_cust <= 0:
+                        QMessageBox.warning(self, "Cảnh báo", "ID khách hàng phải lớn hơn 0!")
+                        return
                 except ValueError:
                     QMessageBox.warning(self, "Cảnh báo", "ID khách hàng phải là số nguyên!")
                     return
@@ -103,26 +153,15 @@ class AddCustomerDialog(QtWidgets.QDialog):
             if not phone.isdigit() or len(phone) != 10:
                 QMessageBox.warning(self, "Cảnh báo", "Số điện thoại phải là 10 chữ số!")
                 return
-            if not self.customer_id:
-                connection = create_connection()
-                cursor = connection.cursor()
-                cursor.execute("SELECT COUNT(*) FROM Customers WHERE id_cust = ?", (id_cust,))
-                count = cursor.fetchone()[0]
-                cursor.close()
-                connection.close()
-                if count > 0:
-                    QMessageBox.warning(self, "Cảnh báo", f"ID khách hàng {id_cust} đã tồn tại!")
-                    return
+
+            # Validate bổ sung: kiểm tra trùng tên và số điện thoại
+            if not self.validate_customer(fullname, phone):
+                return
 
             if self.customer_id:
                 current_customer = CustomerDAO.get_customer_by_id(self.customer_id)
                 if not current_customer:
                     QMessageBox.critical(self, "Lỗi", "Không tìm thấy thông tin khách hàng!")
-                    return
-
-                if phone != current_customer.phone and CustomerDAO.check_phone_exists(phone):
-                    QMessageBox.warning(self, "Cảnh báo",
-                                        "Số điện thoại này đã được đăng ký! Vui lòng sử dụng số khác.")
                     return
 
                 customer = KhachHang(
@@ -140,14 +179,9 @@ class AddCustomerDialog(QtWidgets.QDialog):
                 else:
                     QMessageBox.critical(self, "Lỗi", "Không thể cập nhật thông tin khách hàng!")
             else:
-
-                if CustomerDAO.check_phone_exists(phone):
-                    QMessageBox.warning(self, "Cảnh báo",
-                                        "Số điện thoại này đã được đăng ký! Vui lòng sử dụng số khác.")
-                    return
-
                 try:
-                    CustomerDAO.add_customer(fullname, phone, id_cust)
+                    # Chỉ truyền fullname và phone, vì CustomerDAO.add_customer tự tạo id_cust
+                    CustomerDAO.add_customer(fullname, phone)
                     QMessageBox.information(self, "Thông báo", "Thêm khách hàng mới thành công!")
                     self.accept()
                 except Exception as e:

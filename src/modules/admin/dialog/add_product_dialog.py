@@ -4,6 +4,7 @@ from PyQt5.QtWidgets import QMessageBox
 from src.database.DAO.admin.CategoryDAO import CategoryDAO
 from src.database.DAO.admin.ProductAdminDAO import ProductDAO
 from src.database.connection import create_connection
+import re
 
 class AddProductDialog(QtWidgets.QDialog):
     def __init__(self, parent=None, product_id=None):
@@ -36,9 +37,6 @@ class AddProductDialog(QtWidgets.QDialog):
             self.generate_new_id()
 
     def load_categories(self):
-        """
-        Nạp danh sách danh mục vào combo box và tự động chọn danh mục hiện tại của sản phẩm nếu đang ở chế độ sửa
-        """
         print("Bắt đầu nạp danh mục...")
         try:
             if hasattr(self.ui, "combo_box_danhmuc"):
@@ -81,9 +79,6 @@ class AddProductDialog(QtWidgets.QDialog):
             traceback.print_exc()
 
     def generate_new_id(self):
-        """
-        Tạo ID mới cho sản phẩm bằng cách lấy ID lớn nhất từ bảng Products và tăng thêm 1
-        """
         try:
             connection = create_connection()
             cursor = connection.cursor()
@@ -100,9 +95,6 @@ class AddProductDialog(QtWidgets.QDialog):
             QtWidgets.QMessageBox.critical(self, "Lỗi", f"Không thể tạo ID mới: {str(e)}")
 
     def on_category_changed(self, index):
-        """
-        Xử lý khi người dùng chọn một mục trong combo box danh mục
-        """
         try:
             if index == 0:
                 self.show_add_category_dialog()
@@ -112,9 +104,6 @@ class AddProductDialog(QtWidgets.QDialog):
             traceback.print_exc()
 
     def show_add_category_dialog(self):
-        """
-        Hiển thị dialog thêm danh mục mới
-        """
         try:
             category_name, ok = QtWidgets.QInputDialog.getText(
                 self,
@@ -155,6 +144,62 @@ class AddProductDialog(QtWidgets.QDialog):
                 self.ui.combo_box_danhmuc.setCurrentIndex(1)
                 self.ui.combo_box_danhmuc.currentIndexChanged.connect(self.on_category_changed)
 
+    def validate_product(self, id_prod, name, price, unit, category_id):
+        """Validate dữ liệu sản phẩm trước khi lưu"""
+        # Kiểm tra ID không âm
+        try:
+            id_prod = int(id_prod)
+            if id_prod < 0:
+                QtWidgets.QMessageBox.warning(self, "Lỗi", "ID sản phẩm không được âm.")
+                return False
+        except ValueError:
+            QtWidgets.QMessageBox.warning(self, "Lỗi", "ID sản phẩm phải là số nguyên.")
+            return False
+
+        # Kiểm tra tên không chứa ký tự đặc biệt
+        if not re.match(r'^[a-zA-Z0-9\s-]+$', name):
+            QtWidgets.QMessageBox.warning(self, "Lỗi", "Tên sản phẩm chỉ được chứa chữ, số, dấu cách và dấu gạch ngang.")
+            return False
+
+        # Kiểm tra giá không âm
+        try:
+            price = float(price) if price else 0
+            if price < 0:
+                QtWidgets.QMessageBox.warning(self, "Lỗi", "Giá bán không được âm.")
+                return False
+        except ValueError:
+            QtWidgets.QMessageBox.warning(self, "Lỗi", "Giá bán phải là số hợp lệ.")
+            return False
+
+        # Kiểm tra tên trùng
+        try:
+            connection = create_connection()
+            cursor = connection.cursor()
+            if self.product_id:
+                cursor.execute("SELECT COUNT(*) FROM Products WHERE LOWER(name) = LOWER(?) AND id_prod != ?",
+                             (name, self.product_id))
+            else:
+                cursor.execute("SELECT COUNT(*) FROM Products WHERE LOWER(name) = LOWER(?)", (name,))
+            count = cursor.fetchone()[0]
+            cursor.close()
+            connection.close()
+            if count > 0:
+                QtWidgets.QMessageBox.warning(self, "Lỗi", f"Tên sản phẩm '{name}' đã tồn tại.")
+                return False
+        except Exception as e:
+            QtWidgets.QMessageBox.critical(self, "Lỗi", f"Lỗi kiểm tra trùng tên sản phẩm: {str(e)}")
+            return False
+
+        # Kiểm tra đơn vị và danh mục
+        if not unit:
+            QtWidgets.QMessageBox.warning(self, "Lỗi", "Đơn vị sản phẩm không được để trống.")
+            return False
+        if category_id == -1:
+            QtWidgets.QMessageBox.warning(self, "Lỗi", "Vui lòng chọn danh mục sản phẩm.")
+            return False
+
+        return True
+
     def save_product(self):
         try:
             id_text = self.ui.line_id.text().strip() if hasattr(self.ui, "line_id") else ""
@@ -164,50 +209,29 @@ class AddProductDialog(QtWidgets.QDialog):
             description = self.ui.line_ghiChu.text().strip() if hasattr(self.ui, "line_ghiChu") else ""
             image_url = self.ui.line_link_hinhanh.text().strip() if hasattr(self.ui, "line_link_hinhanh") else ""
 
-            if not id_text:
-                QMessageBox.warning(self, "Lỗi", "ID sản phẩm không được để trống.")
-                return
-            try:
-                id_prod = int(id_text)
-            except ValueError:
-                QMessageBox.warning(self, "Lỗi", "ID sản phẩm phải là số nguyên.")
-                return
-            if not name:
-                QMessageBox.warning(self, "Lỗi", "Tên sản phẩm không được để trống.")
-                return
-            if not unit:
-                QMessageBox.warning(self, "Lỗi", "Đơn vị sản phẩm không được để trống.")
-                return
-            try:
-                price = float(price_str) if price_str else 0
-                if price < 0:
-                    QMessageBox.warning(self, "Lỗi", "Giá bán không được âm.")
-                    return
-            except ValueError:
-                QMessageBox.warning(self, "Lỗi", "Giá bán phải là một số hợp lệ.")
-                return
+            # Validate dữ liệu
             category_id = -1
             if hasattr(self.ui, "combo_box_danhmuc") and self.ui.combo_box_danhmuc.currentIndex() > 0:
                 category_id = self.ui.combo_box_danhmuc.currentData()
-            if category_id == -1:
-                QMessageBox.warning(self, "Lỗi", "Vui lòng chọn danh mục sản phẩm.")
+
+            if not self.validate_product(id_text, name, price_str, unit, category_id):
                 return
 
             if self.product_id is None:
                 connection = create_connection()
                 cursor = connection.cursor()
-                cursor.execute("SELECT COUNT(*) FROM Products WHERE id_prod = ?", (id_prod,))
+                cursor.execute("SELECT COUNT(*) FROM Products WHERE id_prod = ?", (int(id_text),))
                 count = cursor.fetchone()[0]
                 cursor.close()
                 connection.close()
                 if count > 0:
-                    QMessageBox.warning(self, "Lỗi", f"ID sản phẩm {id_prod} đã tồn tại.")
+                    QMessageBox.warning(self, "Lỗi", f"ID sản phẩm {id_text} đã tồn tại.")
                     return
 
             product_data = {
                 "name": name,
                 "unit": unit,
-                "price": price,
+                "price": float(price_str) if price_str else 0,
                 "description": description,
                 "id_category": category_id,
                 "image_url": image_url

@@ -1,4 +1,5 @@
 from PyQt5 import QtWidgets, QtCore
+import re
 
 from src.modules.admin.ui.ui_py.add_category import Ui_Form
 from src.database.DAO.admin.CategoryDAO import CategoryDAO
@@ -74,9 +75,6 @@ class AddCategoryDialog(QtWidgets.QDialog):
             QtWidgets.QMessageBox.critical(self, "Lỗi", f"Không thể tạo ID mới: {str(e)}")
 
     def load_category_data(self):
-        """
-        Nạp thông tin danh mục vào form khi mở dialog để sửa
-        """
         if self.category_id is None:
             return
 
@@ -110,13 +108,45 @@ class AddCategoryDialog(QtWidgets.QDialog):
             import traceback
             traceback.print_exc()
 
-    def get_category_data(self):
-        """
-        Lấy dữ liệu danh mục từ form
+    def validate_category(self, id_category, name):
+        """Validate dữ liệu danh mục trước khi lưu"""
+        # Kiểm tra ID không âm
+        try:
+            id_category = int(id_category)
+            if id_category < 0:
+                QtWidgets.QMessageBox.warning(self, "Lỗi", "ID danh mục không được âm.")
+                return False
+        except ValueError:
+            QtWidgets.QMessageBox.warning(self, "Lỗi", "ID danh mục phải là số nguyên.")
+            return False
 
-        Returns:
-            dict: Dữ liệu danh mục
-        """
+        # Kiểm tra tên không chứa ký tự đặc biệt
+        if not re.match(r'^[a-zA-Z0-9\s-]+$', name):
+            QtWidgets.QMessageBox.warning(self, "Lỗi", "Tên danh mục chỉ được chứa chữ, số, dấu cách và dấu gạch ngang.")
+            return False
+
+        # Kiểm tra tên trùng (không phân biệt hoa/thường)
+        try:
+            connection = create_connection()
+            cursor = connection.cursor()
+            if self.category_id:
+                cursor.execute("SELECT COUNT(*) FROM Categories WHERE LOWER(name) = LOWER(?) AND id_category != ?",
+                             (name, self.category_id))
+            else:
+                cursor.execute("SELECT COUNT(*) FROM Categories WHERE LOWER(name) = LOWER(?)", (name,))
+            count = cursor.fetchone()[0]
+            cursor.close()
+            connection.close()
+            if count > 0:
+                QtWidgets.QMessageBox.warning(self, "Lỗi", f"Tên danh mục '{name}' đã tồn tại.")
+                return False
+        except Exception as e:
+            QtWidgets.QMessageBox.critical(self, "Lỗi", f"Lỗi kiểm tra trùng tên danh mục: {str(e)}")
+            return False
+
+        return True
+
+    def get_category_data(self):
         category_data = {}
         if hasattr(self.ui, "line_id"):
             category_data["id"] = self.ui.line_id.text().strip()
@@ -125,34 +155,19 @@ class AddCategoryDialog(QtWidgets.QDialog):
         return category_data
 
     def save_category(self):
-        """
-        Lưu thông tin danh mục vào database
-        """
         try:
             category_data = self.get_category_data()
 
             if not category_data["id"]:
                 QtWidgets.QMessageBox.warning(self, "Lỗi", "ID danh mục không được để trống.")
                 return
-            try:
-                id_category = int(category_data["id"])
-            except ValueError:
-                QtWidgets.QMessageBox.warning(self, "Lỗi", "ID danh mục phải là số nguyên.")
-                return
             if not category_data["name"]:
                 QtWidgets.QMessageBox.warning(self, "Lỗi", "Tên danh mục không được để trống.")
                 return
 
-            if self.category_id is None:
-                connection = create_connection()
-                cursor = connection.cursor()
-                cursor.execute("SELECT COUNT(*) FROM Categories WHERE id_category = ?", (id_category,))
-                count = cursor.fetchone()[0]
-                cursor.close()
-                connection.close()
-                if count > 0:
-                    QtWidgets.QMessageBox.warning(self, "Lỗi", f"ID danh mục {id_category} đã tồn tại.")
-                    return
+            # Validate dữ liệu
+            if not self.validate_category(category_data["id"], category_data["name"]):
+                return
 
             success = False
             if self.category_id is None:

@@ -88,7 +88,7 @@ def load_data_to_danhMuc_tb(table):
         btn_edit = QPushButton("Sửa")
         btn_edit.setStyleSheet("""
             QPushButton {
-                background-color: rgba(80, 200, 200, 0.3); /* Xanh ngọc trong suốt */
+                background-color: rgba(80, 200, 200, 0.7); /* Xanh ngọc trong suốt */
                 color: white;
                 border: none;
                 border-radius: 5px;
