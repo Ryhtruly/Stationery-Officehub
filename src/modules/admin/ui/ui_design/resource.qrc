@@ -1,0 +1,54 @@
+<RCC>
+  <qresource prefix="icons">
+    <file>icons/SnapBG.ai_1747709355469.png</file>
+    <file>icons/img.png</file>
+    <file>icons/contacts-2-xl.png</file>
+    <file>icons/contacts-2-xxl.png</file>
+    <file>icons/camera-4-xxl (1).png</file>
+    <file>icons/camera-4-xxl.png</file>
+    <file>icons/d306eb23-6f5f-40c6-89dc-1b8ed0289d0d.jfif</file>
+    <file>icons/vanphong.jpg</file>
+    <file>icons/pngtree-business-office-supplies-light-background-picture-image_2422990.jpg</file>
+    <file>icons/iStock-876649488-details.jpg</file>
+    <file>icons/pngtree-business-office-supplies-orange-background-image_2340211.jpg</file>
+    <file>icons/pngtree-wellarranged-office-desk-with-supplies-image_16011568.jpg</file>
+    <file>icons/bar-chart-5-xxl (1).png</file>
+    <file>icons/bar-chart-6-xxl (1).png</file>
+    <file>icons/bar-chart-6-xxl.png</file>
+    <file>icons/bill-xxl.png</file>
+    <file>icons/bar-chart-5-xxl (1).png</file>
+    <file>icons/bar-chart-5-xxl.png</file>
+    <file>icons/save-as-xl.png</file>
+    <file>icons/edit-11-xxl (1).png</file>
+    <file>icons/edit-11-xxl.png</file>
+    <file>icons/save-as-xxl.png</file>
+    <file>icons/logout-xxl.png</file>
+    <file>icons/visible-xxl (1).png</file>
+    <file>icons/visible-xxl.png</file>
+    <file>icons/calendar-7-xl.png</file>
+    <file>icons/calendar-7-xxl.png</file>
+    <file>icons/dashboard-5-xxl.png</file>
+    <file>icons/dashboard-xl.png</file>
+    <file>icons/edit-10-xl.png</file>
+    <file>icons/edit-10-xxl.png</file>
+    <file>icons/filled-filter-xxl.png</file>
+    <file>icons/group-xl.png</file>
+    <file>icons/group-xxl.png</file>
+    <file>icons/home-7-xl.png</file>
+    <file>icons/home-7-xxl.png</file>
+    <file>icons/line-width-xl.png</file>
+    <file>icons/line-width-xxl.png</file>
+    <file>icons/list-view-xl.png</file>
+    <file>icons/list-view-xxl.png</file>
+    <file>icons/product-xl.png</file>
+    <file>icons/product-xxl.png</file>
+    <file>icons/sale-2-xl (1).png</file>
+    <file>icons/sale-2-xl.png</file>
+    <file>icons/search-12-xl.png</file>
+    <file>icons/search-12-xxl.png</file>
+    <file>icons/user-xl.png</file>
+    <file>icons/user-xxl.png</file>
+    <file>icons/x-mark-5-xl.png</file>
+    <file>icons/x-mark-5-xxl.png</file>
+  </qresource>
+</RCC>

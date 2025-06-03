@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>481</width>
+    <height>315</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="1">
+    <spacer name="verticalSpacer_3">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>68</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="1" column="0">
+    <spacer name="horizontalSpacer_3">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>93</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="1" column="1">
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <property name="spacing">
+      <number>29</number>
+     </property>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="label">
+         <property name="font">
+          <font>
+           <family>Times New Roman,serif</family>
+           <pointsize>-1</pointsize>
+           <weight>75</weight>
+           <italic>true</italic>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLabel {
+    color: #8b5e3c; /* Màu chữ nâu vintage */
+    font-family: &quot;Times New Roman&quot;, serif; /* Font chữ cổ điển */
+    font-style: italic; /* Chữ in nghiêng */
+    font-weight: bold;
+    font-size: 30px;
+    padding: 8px;
+
+    text-align: center;
+}
+
+
+</string>
+         </property>
+         <property name="text">
+          <string>BẠN CÓ CHẮC CHẮN </string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_2">
+         <property name="font">
+          <font>
+           <family>Times New Roman,serif</family>
+           <pointsize>-1</pointsize>
+           <weight>75</weight>
+           <italic>true</italic>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLabel {
+    color: #8b5e3c; /* Màu chữ nâu vintage */
+    font-family: &quot;Times New Roman&quot;, serif; /* Font chữ cổ điển */
+    font-style: italic; /* Chữ in nghiêng */
+    font-weight: bold;
+    font-size: 30px;
+    padding: 8px;
+
+    text-align: center;
+}
+
+
+</string>
+         </property>
+         <property name="text">
+          <string>MUỐN XÓA SẢN PHẨM NÀY ?</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <spacer name="verticalSpacer">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>13</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <property name="leftMargin">
+        <number>110</number>
+       </property>
+       <property name="rightMargin">
+        <number>110</number>
+       </property>
+       <item>
+        <widget class="QPushButton" name="yes_btn">
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+    background-color: #d4a373; /* Màu nền vintage */
+    color: #ffffff; /* Màu chữ trắng */
+    border: 2px solid #8c5c3f; /* Viền màu nâu đậm */
+    border-radius: 10px; /* Bo góc mềm mại */
+    font-family: &quot;Georgia&quot;, serif; /* Font chữ cổ điển */
+    font-size: 10px; /* Kích thước chữ */
+    font-weight: bold; /* Chữ đậm */
+    padding: 10px 20px; /* Khoảng cách bên trong nút */
+    text-transform: uppercase; /* Chữ in hoa */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Hiệu ứng bóng */
+}
+
+QPushButton:hover {
+    background-color: #c28e62; /* Màu nền khi hover */
+    box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.4); /* Bóng khi hover */
+    transform: scale(1.05); /* Hiệu ứng phóng to nhẹ */
+}
+
+QPushButton:pressed {
+    background-color: #a67c55; /* Màu nền khi nhấn */
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.3); /* Hiệu ứng bóng khi nhấn */
+    transform: scale(0.95); /* Hiệu ứng thu nhỏ nhẹ */
+}
+
+QPushButton:checked {
+    background-color: #8c5c3f; /* Màu nền khi nút được chọn */
+    color: #f4f1e9; /* Màu chữ khi chọn */
+    border: 2px solid #6b3f2b; /* Viền đậm hơn */
+    box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.4); /* Hiệu ứng bóng bên trong */
+    transform: scale(1); /* Giữ nguyên kích thước */
+}
+</string>
+         </property>
+         <property name="text">
+          <string>Có</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="no_btn">
+         <property name="styleSheet">
+          <string notr="true">#no_btn {
+    background-color: white;
+    color: black;
+    border: 1px solid #d9d9d9;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    border-radius: 10px;
+    padding: 10px 20px; /* Khoảng cách trong nút */
+}
+
+/* Hover effect */
+#no_btn:hover {
+    background-color: #f5f5f5;  /* Nhẹ hơn để tạo hiệu ứng phản hồi */
+    border: 1px solid #a0a0a0;  /* Viền đậm hơn một chút khi hover */
+    color: black;
+}
+</string>
+         </property>
+         <property name="text">
+          <string>Không</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="2">
+    <spacer name="horizontalSpacer_2">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>93</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="2" column="1">
+    <spacer name="verticalSpacer_2">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>67</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

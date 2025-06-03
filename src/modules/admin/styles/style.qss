@@ -1,0 +1,162 @@
+/*= Style for mainwindow START
+  ==================================================== */
+    #MainWindow {
+        border-image: url(:/icons/icons/vanphong.jpg);
+}
+/*= END
+  ==================================================== */
+
+/*= Style for button to change menu style START
+  ==================================================== */
+	#Change_1 {
+		padding: 5px;
+		border: none;
+		width: 30px;
+		height: 30px;
+		border-radius: 20px;
+		background-color: #e0e0e0;
+
+	}
+	#change_btn:hover {
+		background-color: #c0c0c0;
+	}
+/*= END
+  ==================================================== */
+
+/*= Style for header widget START
+  ==================================================== */
+	#widget {
+		background-color: rgba(255, 255, 255, 0.05);
+		border-bottom: 2px solid #d0d7de;
+		padding: 10px 15px;
+	}
+/*= END
+  ==================================================== */
+
+/*= Style for menu with icon only START
+  ==================================================== */
+  	/* style for widget */
+	#icon_only {
+    background-color: rgba(0, 0, 0, 0.5); /* Tông tối hơn, đồng bộ với #Full_menu */
+    width: 50px;
+    border-right: 1px solid rgba(255, 255, 255, 0.2); /* Viền sáng nhẹ */
+}
+
+/* style for QPushButton and QLabel */
+#icon_only QPushButton {
+    height: 50px;
+    border: none;
+    color: #fff;
+    font-size: 14px;
+    border-radius: 25px;
+}
+
+#icon_only QPushButton:hover {
+    background-color: rgba(255, 255, 255, 0.4); /* Nền sáng hơn khi hover */
+    border: 1px solid rgba(255, 255, 255, 0.5); /* Viền sáng nhẹ */
+    color: #fff;
+}
+
+#icon_only QPushButton:checked {
+    background-color: rgba(100, 150, 255, 0.3); /* Nền xanh lam nhẹ khi checked */
+    border: 1px solid rgba(100, 150, 255, 0.7); /* Viền xanh lam sáng */
+    box-shadow: 0 0 8px rgba(100, 150, 255, 0.5); /* Hiệu ứng phát sáng */
+    color: #fff;
+}
+
+	/* style for logo image */
+	#logo_1 {
+		padding: 5px;
+		border-radius: 5px;
+	}
+
+/*= END
+  ==================================================== */
+
+/*= Style for menu with icon and text START
+  ==================================================== */
+	/* style for widget */
+	#Full_menu {
+    background-color: rgba(0, 0, 0, 0.5); /* Tăng độ tối: từ 0.3 lên 0.5 */
+    border-right: 1px solid rgba(255, 255, 255, 0.2); /* Viền sáng nhẹ */
+    color : #fff;
+}
+
+/* style for QPushButton */
+#Full_menu QPushButton {
+    border: none;
+    border-radius: 25px;
+    text-align: left;
+    height: 35px;
+    padding: 8px 0 8px 15px;
+    color: #fff;
+    font-weight: bold;
+}
+
+#Full_menu QPushButton:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Nền sáng hơn khi hover */
+    color: #fff;
+}
+
+#Full_menu QPushButton:checked {
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.15);
+     border : 1px solid white;/* Nền sáng nhẹ khi checked */
+}
+	/* style for logo image */
+	#logo_2 {
+		padding: 5px;
+		color: #fff;
+		font-size: 18px;
+		font-weight: bold;
+	}
+
+	#logo_3 {
+		padding-right: 10px;
+		color: #fff;
+		font-size: 14px;
+	}
+/*= END
+  ==================================================== */
+
+/*= Style for search button START
+  ==================================================== */
+	#Search {
+		border: none;
+		background-color: #e0e0e0;
+		border-radius: 15px;
+		padding: 5px;
+
+	}
+
+	#Search:hover {
+		background-color: #c0c0c0;
+	}
+/*= END
+  ==================================================== */
+
+/*= Style for search input START
+  ==================================================== */
+
+/*= END
+  ==================================================== */
+
+/*= Style for user information button START
+  ==================================================== */
+	#Account {
+		border: none;
+		border-radius: 20px;
+		background-color: #e0e0e0;
+		width: 40px;
+		height: 40px;
+		align-items: center;
+		justify-content: center
+	}
+
+	#Account:hover {
+		background-color: #c0c0c0; /* Màu khi hover */
+	}
+
+
+/*= END
+  ==================================================== */
