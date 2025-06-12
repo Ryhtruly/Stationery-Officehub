@@ -92,6 +92,8 @@ _Kiến trúc ứng dụng_ :
 - Giao diện : Desktop Application
 - Kết nối CSDL : Pyodbc
 - Xử lý báo cáo : ReportLab, Matplotlib
+- API RESTful : Flask
+- Upload hình ảnh : Cloudinary
 
 <a id="cai-dat-va-su-dung"></a>
 ## Cài đặt 
