@@ -129,7 +129,7 @@ _Thiết lập cơ sở dữ liệu_ :
    - Mở file `setup/setup_database.sql` trong thư mục dự án.
    - Copy toàn bộ nội dung file và dán vào một query mới trong SSMS (File > New > Query).
    - Nhấn **Execute** (hoặc phím F5) để chạy script.
-   - Script sẽ tạo cơ sở dữ liệu `Stationery`, các bảng cần thiết, và chèn dữ liệu mẫu.
+   - Script sẽ tạo cơ sở dữ liệu `Stationery`, các bảng cần thiết, và chèn dữ liệu mẫu ( chú ý dữ liệu đã được có trong file setup, bạn có thể chỉnh sửa tùy ý dựa trên chức năng có trên ứng dụng.
 
 3. **Kiểm tra cơ sở dữ liệu:**
    - Sau khi chạy script, kiểm tra xem cơ sở dữ liệu `Stationery` đã được tạo chưa bằng cách mở rộng mục **Databases** trong SSMS.
