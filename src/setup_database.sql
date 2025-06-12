@@ -499,4 +499,4 @@ INSERT INTO dbo.Warehouse_Product (id_warehouse, id_prod, quantity) VALUES
 (1, 12354, 200),
 (1, 12355, 10),
 (1, 12356, 10),
-(1,
+(1, 12347, 20);
