@@ -21,7 +21,6 @@ class AddProductToImportDialog(QtWidgets.QDialog):
         self.connect_events()
 
         self.load_categories()
-        self.load_warehouses()
 
         self.finished.connect(self.on_dialog_finished)
 
@@ -98,9 +97,7 @@ class AddProductToImportDialog(QtWidgets.QDialog):
                 QMessageBox.warning(self, "Lỗi", "Vui lòng chọn danh mục.")
                 return
 
-            # Lấy ID kho từ combobox
-            warehouse_index = self.ui.combo_box_kho.currentIndex()
-            id_warehouse = self.ui.combo_box_kho.itemData(warehouse_index)
+            id_warehouse = 1
             if id_warehouse is None:
                 QMessageBox.warning(self, "Lỗi", "Vui lòng chọn kho.")
                 return
@@ -137,11 +134,7 @@ class AddProductToImportDialog(QtWidgets.QDialog):
                     self.ui.combo_box_danhmuc.currentIndexChanged.disconnect()
                 except:
                     pass
-            if hasattr(self.ui, "combo_box_kho"):
-                try:
-                    self.ui.combo_box_kho.currentIndexChanged.disconnect()
-                except:
-                    pass
+
         except:
             pass
 
@@ -191,22 +184,6 @@ class AddProductToImportDialog(QtWidgets.QDialog):
         except Exception as e:
             print(f"Lỗi khi nạp danh mục: {str(e)}")
 
-    def load_warehouses(self):
-        print("Bắt đầu nạp danh sách kho...")
-        try:
-            if hasattr(self.ui, "combo_box_kho"):
-                print("Tìm thấy combo box kho: combo_box_kho")
-                warehouses = WarehouseDAO.get_all_warehouses()
-                print(f"Đã lấy được {len(warehouses)} kho từ database")
-                self.ui.combo_box_kho.clear()
-                for warehouse in warehouses:
-                    print(f"Thêm kho: {warehouse.name} (ID: {warehouse.id_warehouse})")
-                    self.ui.combo_box_kho.addItem(warehouse.name, warehouse.id_warehouse)
-                self.ui.combo_box_kho.currentIndexChanged.connect(self.on_warehouse_changed)
-            else:
-                print("Không tìm thấy combo box kho trong UI")
-        except Exception as e:
-            print(f"Lỗi khi nạp danh sách kho: {str(e)}")
 
     def on_category_changed(self, index):
         selected_value = self.ui.combo_box_danhmuc.itemData(index)
@@ -215,9 +192,7 @@ class AddProductToImportDialog(QtWidgets.QDialog):
             if index > 0 and self.ui.combo_box_danhmuc.count() > 1:
                 self.ui.combo_box_danhmuc.setCurrentIndex(1)
 
-    def on_warehouse_changed(self, index):
-        selected_warehouse_id = self.ui.combo_box_kho.itemData(index)
-        print(f"Đã chọn kho có ID: {selected_warehouse_id}")
+
 
     def get_product_data(self):
         try:
@@ -226,9 +201,8 @@ class AddProductToImportDialog(QtWidgets.QDialog):
             category_index = self.ui.combo_box_danhmuc.currentIndex()
             category_id = self.ui.combo_box_danhmuc.itemData(category_index)
             category_name = self.ui.combo_box_danhmuc.currentText()
-            warehouse_index = self.ui.combo_box_kho.currentIndex()
-            warehouse_id = self.ui.combo_box_kho.itemData(warehouse_index)
-            warehouse_name = self.ui.combo_box_kho.currentText()
+            warehouse_id = 1
+            warehouse_name = "Kho 1"
             quantity = self.ui.line_soLuong.text().strip()
             unit = self.ui.line_unit.text().strip()
             import_price = self.ui.line_gia_nhap.text().strip()
@@ -258,5 +232,3 @@ class AddProductToImportDialog(QtWidgets.QDialog):
         self.ui.line_unit.clear()
         if hasattr(self.ui, "combo_box_danhmuc"):
             self.ui.combo_box_danhmuc.setCurrentIndex(0)
-        if hasattr(self.ui, "combo_box_kho") and self.ui.combo_box_kho.count() > 0:
-            self.ui.combo_box_kho.setCurrentIndex(0)

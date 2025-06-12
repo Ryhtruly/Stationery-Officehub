@@ -302,6 +302,7 @@ class Ui_Form(object):
         self.verticalLayout_7.addWidget(self.label_8)
         self.line_gia_nhap = QtWidgets.QLineEdit(self.layoutWidget)
         self.line_gia_nhap.setMinimumSize(QtCore.QSize(271, 35))
+        self.line_gia_nhap.setMaximumSize(QtCore.QSize(271, 16777215))
         self.line_gia_nhap.setStyleSheet("QLineEdit {\n"
 "    background-color: #ffffff; /* Màu nền trắng */\n"
 "    border: 1px solid #cccccc; /* Viền xám nhạt */\n"
@@ -321,34 +322,6 @@ class Ui_Form(object):
         self.horizontalLayout_5.addLayout(self.verticalLayout_7)
         spacerItem6 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_5.addItem(spacerItem6)
-        self.verticalLayout_8 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_8.setObjectName("verticalLayout_8")
-        self.label_9 = QtWidgets.QLabel(self.layoutWidget)
-        self.label_9.setMinimumSize(QtCore.QSize(141, 18))
-        font = QtGui.QFont()
-        font.setPointSize(9)
-        self.label_9.setFont(font)
-        self.label_9.setObjectName("label_9")
-        self.verticalLayout_8.addWidget(self.label_9)
-        self.combo_box_kho = QtWidgets.QComboBox(self.layoutWidget)
-        self.combo_box_kho.setMinimumSize(QtCore.QSize(281, 35))
-        self.combo_box_kho.setStyleSheet("QComboBox {\n"
-"    background-color: #ffffff; /* Màu nền trắng */\n"
-"    border: 1px solid #cccccc; /* Viền xám nhạt */\n"
-"    border-radius: 15px; /* Bo góc */\n"
-"    padding: 5px; /* Khoảng cách bên trong */\n"
-"    font-size: 14px;\n"
-"    color: #333333;\n"
-"}\n"
-"\n"
-"/* Hiệu ứng khi ô nhập liệu được chọn */\n"
-"QComboBox:focus {\n"
-"    border: 1px solid #4a90e2; /* Viền xanh khi focus */\n"
-"    background-color: #e6f0fa; /* Nền xanh nhạt khi focus */\n"
-"}")
-        self.combo_box_kho.setObjectName("combo_box_kho")
-        self.verticalLayout_8.addWidget(self.combo_box_kho)
-        self.horizontalLayout_5.addLayout(self.verticalLayout_8)
         self.gridLayout.addLayout(self.horizontalLayout_5, 5, 0, 1, 1)
         spacerItem7 = QtWidgets.QSpacerItem(20, 18, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.gridLayout.addItem(spacerItem7, 4, 0, 1, 1)
@@ -371,4 +344,3 @@ class Ui_Form(object):
         self.huy_btn.setText(_translate("Form", "Hủy"))
         self.label_8.setText(_translate("Form", "Giá nhập : "))
         self.line_gia_nhap.setPlaceholderText(_translate("Form", "  Đơn giá..."))
-        self.label_9.setText(_translate("Form", "Nhập vào kho : "))

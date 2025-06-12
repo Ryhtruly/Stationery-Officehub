@@ -172,10 +172,6 @@ class AddProductToImportHandler:
             if index >= 0:
                 dialog.ui.combo_box_danhmuc.setCurrentIndex(index)
 
-            # Chọn kho
-            index = dialog.ui.combo_box_kho.findText(product_data['warehouse_name'])
-            if index >= 0:
-                dialog.ui.combo_box_kho.setCurrentIndex(index)
 
             # Thay đổi tiêu đề và nút
             dialog.ui.them_sua_label.setText("CHỈNH SỬA SẢN PHẨM")

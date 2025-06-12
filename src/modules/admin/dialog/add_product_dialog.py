@@ -1,10 +1,13 @@
 from src.modules.admin.ui.ui_py.add_product import Ui_Form
 from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import QMessageBox
+from PyQt5.QtWidgets import QMessageBox, QFileDialog
 from src.database.DAO.admin.CategoryDAO import CategoryDAO
 from src.database.DAO.admin.ProductAdminDAO import ProductDAO
 from src.database.connection import create_connection
 import re
+
+from src.service.cloudinary_service import upload_image
+
 
 class AddProductDialog(QtWidgets.QDialog):
     def __init__(self, parent=None, product_id=None):
@@ -17,6 +20,8 @@ class AddProductDialog(QtWidgets.QDialog):
 
         if hasattr(self.ui, "them_sua_label"):
             self.ui.them_sua_label.setText("THÊM SẢN PHẨM MỚI" if product_id is None else "CẬP NHẬT SẢN PHẨM")
+
+        self.ui.chon_anh_btn.clicked.connect(self.choose_and_upload_image)
 
         if hasattr(self.ui, "huy_btn"):
             self.ui.huy_btn.clicked.connect(self.close)
@@ -35,6 +40,25 @@ class AddProductDialog(QtWidgets.QDialog):
             self.load_product_data()
         else:
             self.generate_new_id()
+
+    def choose_and_upload_image(self):
+        # Mở dialog chọn file ảnh
+        file_path, _ = QFileDialog.getOpenFileName(self, "Chọn ảnh", "", "Image Files (*.png *.jpg *.jpeg *.bmp)")
+        if not file_path:
+            return  # Người dùng hủy chọn
+
+        try:
+            with open(file_path, "rb") as image_file:
+                image_url = upload_image(image_file)
+
+            if image_url:
+                # Set link ảnh vào line_edit
+                self.ui.line_link_hinhanh.setText(image_url)
+                QMessageBox.information(self, "Thành công", "Upload ảnh thành công!")
+            else:
+                QMessageBox.warning(self, "Lỗi", "Upload ảnh thất bại!")
+        except Exception as e:
+            QMessageBox.critical(self, "Lỗi", f"Đã xảy ra lỗi: {str(e)}")
 
     def load_categories(self):
         print("Bắt đầu nạp danh mục...")
@@ -157,8 +181,8 @@ class AddProductDialog(QtWidgets.QDialog):
             return False
 
         # Kiểm tra tên không chứa ký tự đặc biệt
-        if not re.match(r'^[a-zA-Z0-9\s-]+$', name):
-            QtWidgets.QMessageBox.warning(self, "Lỗi", "Tên sản phẩm chỉ được chứa chữ, số, dấu cách và dấu gạch ngang.")
+        if not re.match(r'^[\w\sÀ-ỹ0-9]+$', name, re.UNICODE):
+            QtWidgets.QMessageBox.warning(self, "Lỗi", "Tên sản phẩm chỉ được chứa chữ (có dấu), số và dấu cách.")
             return False
 
         # Kiểm tra giá không âm

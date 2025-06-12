@@ -711,7 +711,7 @@ QPushButton:hover::icon {
        <item>
         <widget class="QStackedWidget" name="stackedWidget">
          <property name="currentIndex">
-          <number>2</number>
+          <number>1</number>
          </property>
          <widget class="QWidget" name="product">
           <layout class="QGridLayout" name="gridLayout_8">
@@ -769,7 +769,7 @@ QPushButton:hover::icon {
                   <property name="minimumSize">
                    <size>
                     <width>926</width>
-                    <height>640</height>
+                    <height>620</height>
                    </size>
                   </property>
                   <property name="contextMenuPolicy">
@@ -1721,12 +1721,7 @@ QScrollBar::sub-page:horizontal {
                      </property>
                      <column>
                       <property name="text">
-                       <string>Warehouse ID</string>
-                      </property>
-                     </column>
-                     <column>
-                      <property name="text">
-                       <string>Product ID</string>
+                       <string>Tên sản phẩm</string>
                       </property>
                      </column>
                      <column>
@@ -4940,7 +4935,7 @@ QPushButton:pressed {
  </widget>
  <resources>
   <include location="resource.qrc"/>
-  <include location="../../../../../../../.designer/backup/resource.qrc"/>
+  <include location="resource.qrc"/>
  </resources>
  <connections>
   <connection>

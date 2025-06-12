@@ -48,7 +48,7 @@ class Ui_Form(object):
 "")
         self.label.setObjectName("label")
         self.inf_kho_2 = QtWidgets.QWidget(Form)
-        self.inf_kho_2.setGeometry(QtCore.QRect(60, 60, 501, 150))
+        self.inf_kho_2.setGeometry(QtCore.QRect(60, 60, 501, 301))
         self.inf_kho_2.setStyleSheet("QWidget {\n"
 "    border: 1px solid rgba(60, 60, 60, 0.8); /* Viền mỏng màu xám đậm */\n"
 "    border-radius: 8px; /* Bo góc mềm mại hơn */\n"
@@ -59,24 +59,9 @@ class Ui_Form(object):
 "")
         self.inf_kho_2.setObjectName("inf_kho_2")
         self.lable_kho_1 = QtWidgets.QLabel(self.inf_kho_2)
-        self.lable_kho_1.setGeometry(QtCore.QRect(4, 5, 491, 141))
+        self.lable_kho_1.setGeometry(QtCore.QRect(4, 5, 491, 291))
         self.lable_kho_1.setText("")
         self.lable_kho_1.setObjectName("lable_kho_1")
-        self.inf_kho_1 = QtWidgets.QWidget(Form)
-        self.inf_kho_1.setGeometry(QtCore.QRect(60, 230, 501, 150))
-        self.inf_kho_1.setStyleSheet("QWidget {\n"
-"    border: 1px solid rgba(60, 60, 60, 0.8); /* Viền mỏng màu xám đậm */\n"
-"    border-radius: 8px; /* Bo góc mềm mại hơn */\n"
-"    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15); /* Thêm đổ bóng nhẹ */\n"
-"    background-color: rgba(245, 245, 245, 0.5); /* Nền trắng đục nhẹ */\n"
-"    padding: 2px; /* Thêm padding nhỏ */\n"
-"}\n"
-"")
-        self.inf_kho_1.setObjectName("inf_kho_1")
-        self.label_kho_2 = QtWidgets.QLabel(self.inf_kho_1)
-        self.label_kho_2.setGeometry(QtCore.QRect(4, 5, 491, 141))
-        self.label_kho_2.setText("")
-        self.label_kho_2.setObjectName("label_kho_2")
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)

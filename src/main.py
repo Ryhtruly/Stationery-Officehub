@@ -16,7 +16,6 @@ global_app = None
 current_windows = {}
 
 def load_stylesheet(role):
-    # Xây dựng đường dẫn đến file style.qss trong src/modules/{role}/styles/
     base_path = os.path.abspath(os.path.dirname(__file__))
     style_path = os.path.join(base_path, "modules", role, "styles", "style.qss")
     try:

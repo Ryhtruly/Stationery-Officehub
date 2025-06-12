@@ -53,24 +53,24 @@ class Ui_Form(object):
 "")
         self.them_sua_label.setText("")
         self.them_sua_label.setObjectName("them_sua_label")
-        self.layoutWidget = QtWidgets.QWidget(self.frame)
-        self.layoutWidget.setGeometry(QtCore.QRect(55, 73, 688, 477))
-        self.layoutWidget.setObjectName("layoutWidget")
-        self.gridLayout = QtWidgets.QGridLayout(self.layoutWidget)
+        self.widget = QtWidgets.QWidget(self.frame)
+        self.widget.setGeometry(QtCore.QRect(57, 75, 688, 479))
+        self.widget.setObjectName("widget")
+        self.gridLayout = QtWidgets.QGridLayout(self.widget)
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
         self.gridLayout.setObjectName("gridLayout")
         self.horizontalLayout_4 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_4.setObjectName("horizontalLayout_4")
         self.verticalLayout = QtWidgets.QVBoxLayout()
         self.verticalLayout.setObjectName("verticalLayout")
-        self.label_2 = QtWidgets.QLabel(self.layoutWidget)
+        self.label_2 = QtWidgets.QLabel(self.widget)
         self.label_2.setMinimumSize(QtCore.QSize(101, 31))
         font = QtGui.QFont()
         font.setPointSize(9)
         self.label_2.setFont(font)
         self.label_2.setObjectName("label_2")
         self.verticalLayout.addWidget(self.label_2)
-        self.line_id = QtWidgets.QLineEdit(self.layoutWidget)
+        self.line_id = QtWidgets.QLineEdit(self.widget)
         self.line_id.setMinimumSize(QtCore.QSize(271, 35))
         self.line_id.setStyleSheet("QLineEdit {\n"
 "    background-color: #ffffff; /* Màu nền trắng */\n"
@@ -93,14 +93,14 @@ class Ui_Form(object):
         self.horizontalLayout_4.addItem(spacerItem)
         self.verticalLayout_4 = QtWidgets.QVBoxLayout()
         self.verticalLayout_4.setObjectName("verticalLayout_4")
-        self.label_5 = QtWidgets.QLabel(self.layoutWidget)
+        self.label_5 = QtWidgets.QLabel(self.widget)
         self.label_5.setMinimumSize(QtCore.QSize(101, 31))
         font = QtGui.QFont()
         font.setPointSize(9)
         self.label_5.setFont(font)
         self.label_5.setObjectName("label_5")
         self.verticalLayout_4.addWidget(self.label_5)
-        self.line_unit = QtWidgets.QLineEdit(self.layoutWidget)
+        self.line_unit = QtWidgets.QLineEdit(self.widget)
         self.line_unit.setMinimumSize(QtCore.QSize(281, 35))
         self.line_unit.setMaximumSize(QtCore.QSize(20000, 16777215))
         self.line_unit.setStyleSheet("QLineEdit {\n"
@@ -127,14 +127,14 @@ class Ui_Form(object):
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout()
         self.verticalLayout_2.setObjectName("verticalLayout_2")
-        self.label_3 = QtWidgets.QLabel(self.layoutWidget)
+        self.label_3 = QtWidgets.QLabel(self.widget)
         self.label_3.setMinimumSize(QtCore.QSize(101, 31))
         font = QtGui.QFont()
         font.setPointSize(9)
         self.label_3.setFont(font)
         self.label_3.setObjectName("label_3")
         self.verticalLayout_2.addWidget(self.label_3)
-        self.line_name = QtWidgets.QLineEdit(self.layoutWidget)
+        self.line_name = QtWidgets.QLineEdit(self.widget)
         self.line_name.setMinimumSize(QtCore.QSize(271, 35))
         self.line_name.setStyleSheet("QLineEdit {\n"
 "    background-color: #ffffff; /* Màu nền trắng */\n"
@@ -157,14 +157,14 @@ class Ui_Form(object):
         self.horizontalLayout_3.addItem(spacerItem2)
         self.verticalLayout_3 = QtWidgets.QVBoxLayout()
         self.verticalLayout_3.setObjectName("verticalLayout_3")
-        self.label_4 = QtWidgets.QLabel(self.layoutWidget)
+        self.label_4 = QtWidgets.QLabel(self.widget)
         self.label_4.setMinimumSize(QtCore.QSize(131, 31))
         font = QtGui.QFont()
         font.setPointSize(9)
         self.label_4.setFont(font)
         self.label_4.setObjectName("label_4")
         self.verticalLayout_3.addWidget(self.label_4)
-        self.combo_box_danhmuc = QtWidgets.QComboBox(self.layoutWidget)
+        self.combo_box_danhmuc = QtWidgets.QComboBox(self.widget)
         self.combo_box_danhmuc.setMinimumSize(QtCore.QSize(281, 35))
         self.combo_box_danhmuc.setStyleSheet("QComboBox {\n"
 "    background-color: #ffffff; /* Màu nền trắng */\n"
@@ -184,19 +184,22 @@ class Ui_Form(object):
         self.verticalLayout_3.addWidget(self.combo_box_danhmuc)
         self.horizontalLayout_3.addLayout(self.verticalLayout_3)
         self.gridLayout.addLayout(self.horizontalLayout_3, 2, 0, 1, 1)
+        self.horizontalLayout_7 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_7.setObjectName("horizontalLayout_7")
         self.horizontalLayout = QtWidgets.QHBoxLayout()
+        self.horizontalLayout.setSpacing(25)
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.verticalLayout_9 = QtWidgets.QVBoxLayout()
         self.verticalLayout_9.setObjectName("verticalLayout_9")
-        self.label_10 = QtWidgets.QLabel(self.layoutWidget)
+        self.label_10 = QtWidgets.QLabel(self.widget)
         self.label_10.setMinimumSize(QtCore.QSize(121, 31))
         font = QtGui.QFont()
         font.setPointSize(9)
         self.label_10.setFont(font)
         self.label_10.setObjectName("label_10")
         self.verticalLayout_9.addWidget(self.label_10)
-        self.line_link_hinhanh = QtWidgets.QLineEdit(self.layoutWidget)
-        self.line_link_hinhanh.setMinimumSize(QtCore.QSize(272, 35))
+        self.line_link_hinhanh = QtWidgets.QLineEdit(self.widget)
+        self.line_link_hinhanh.setMinimumSize(QtCore.QSize(200, 35))
         self.line_link_hinhanh.setStyleSheet("QLineEdit {\n"
 "    background-color: #ffffff; /* Màu nền trắng */\n"
 "    border: 1px solid #cccccc; /* Viền xám nhạt */\n"
@@ -214,18 +217,57 @@ class Ui_Form(object):
         self.line_link_hinhanh.setObjectName("line_link_hinhanh")
         self.verticalLayout_9.addWidget(self.line_link_hinhanh)
         self.horizontalLayout.addLayout(self.verticalLayout_9)
-        spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout.addItem(spacerItem3)
+        self.verticalLayout_5 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_5.setObjectName("verticalLayout_5")
+        spacerItem3 = QtWidgets.QSpacerItem(20, 13, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_5.addItem(spacerItem3)
+        self.chon_anh_btn = QtWidgets.QPushButton(self.widget)
+        self.chon_anh_btn.setMinimumSize(QtCore.QSize(91, 35))
+        self.chon_anh_btn.setStyleSheet("QPushButton {\n"
+"    background-color:  rgba(30, 170, 255, 0.7); /* Nền xanh trong suốt */\n"
+"    color: white;\n"
+"    font-weight: bold;\n"
+"    font-size: 14px;\n"
+"    border-radius: 15px;\n"
+"    \n"
+"    /* Viền sáng */\n"
+"    border: 1.5px solid rgba(255, 255, 255, 0.4);\n"
+"    \n"
+"    /* Đổ bóng - QSS hỗ trợ giới hạn */\n"
+"    border-style: outset;\n"
+"    border-width: 1px;\n"
+"    \n"
+"    /* Gradient xanh */\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgba(30, 170, 255, 0.5); /* Xanh sáng hơn khi hover */\n"
+"    border: 1.5px solid rgba(255, 255, 255, 0.6);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgba(0, 120, 200, 0.4);\n"
+"    border: 1.5px solid rgba(255, 255, 255, 0.3);\n"
+"    padding-top: 9px; /* Tạo hiệu ứng nhấn xuống */\n"
+"    padding-left: 17px;\n"
+"}\n"
+"")
+        self.chon_anh_btn.setObjectName("chon_anh_btn")
+        self.verticalLayout_5.addWidget(self.chon_anh_btn)
+        self.horizontalLayout.addLayout(self.verticalLayout_5)
+        self.horizontalLayout_7.addLayout(self.horizontalLayout)
+        spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_7.addItem(spacerItem4)
         self.verticalLayout_6 = QtWidgets.QVBoxLayout()
         self.verticalLayout_6.setObjectName("verticalLayout_6")
-        self.label_7 = QtWidgets.QLabel(self.layoutWidget)
+        self.label_7 = QtWidgets.QLabel(self.widget)
         self.label_7.setMinimumSize(QtCore.QSize(121, 31))
         font = QtGui.QFont()
         font.setPointSize(9)
         self.label_7.setFont(font)
         self.label_7.setObjectName("label_7")
         self.verticalLayout_6.addWidget(self.label_7)
-        self.line_ghiChu = QtWidgets.QLineEdit(self.layoutWidget)
+        self.line_ghiChu = QtWidgets.QLineEdit(self.widget)
         self.line_ghiChu.setMinimumSize(QtCore.QSize(281, 35))
         self.line_ghiChu.setStyleSheet("QLineEdit {\n"
 "    background-color: #ffffff; /* Màu nền trắng */\n"
@@ -243,22 +285,22 @@ class Ui_Form(object):
 "}")
         self.line_ghiChu.setObjectName("line_ghiChu")
         self.verticalLayout_6.addWidget(self.line_ghiChu)
-        self.horizontalLayout.addLayout(self.verticalLayout_6)
-        self.gridLayout.addLayout(self.horizontalLayout, 3, 0, 1, 1)
-        spacerItem4 = QtWidgets.QSpacerItem(20, 18, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.gridLayout.addItem(spacerItem4, 4, 0, 1, 1)
+        self.horizontalLayout_7.addLayout(self.verticalLayout_6)
+        self.gridLayout.addLayout(self.horizontalLayout_7, 3, 0, 1, 1)
+        spacerItem5 = QtWidgets.QSpacerItem(20, 18, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.gridLayout.addItem(spacerItem5, 4, 0, 1, 1)
         self.horizontalLayout_5 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_5.setObjectName("horizontalLayout_5")
         self.verticalLayout_7 = QtWidgets.QVBoxLayout()
         self.verticalLayout_7.setObjectName("verticalLayout_7")
-        self.label_8 = QtWidgets.QLabel(self.layoutWidget)
+        self.label_8 = QtWidgets.QLabel(self.widget)
         self.label_8.setMinimumSize(QtCore.QSize(81, 31))
         font = QtGui.QFont()
         font.setPointSize(9)
         self.label_8.setFont(font)
         self.label_8.setObjectName("label_8")
         self.verticalLayout_7.addWidget(self.label_8)
-        self.line_gia_ban = QtWidgets.QLineEdit(self.layoutWidget)
+        self.line_gia_ban = QtWidgets.QLineEdit(self.widget)
         self.line_gia_ban.setMinimumSize(QtCore.QSize(242, 35))
         self.line_gia_ban.setMaximumSize(QtCore.QSize(272, 16777215))
         self.line_gia_ban.setStyleSheet("QLineEdit {\n"
@@ -278,16 +320,16 @@ class Ui_Form(object):
         self.line_gia_ban.setObjectName("line_gia_ban")
         self.verticalLayout_7.addWidget(self.line_gia_ban)
         self.horizontalLayout_5.addLayout(self.verticalLayout_7)
-        spacerItem5 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_5.addItem(spacerItem5)
+        spacerItem6 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_5.addItem(spacerItem6)
         self.gridLayout.addLayout(self.horizontalLayout_5, 5, 0, 1, 1)
-        spacerItem6 = QtWidgets.QSpacerItem(20, 38, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.gridLayout.addItem(spacerItem6, 6, 0, 1, 1)
+        spacerItem7 = QtWidgets.QSpacerItem(20, 38, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.gridLayout.addItem(spacerItem7, 6, 0, 1, 1)
         self.horizontalLayout_6 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_6.setObjectName("horizontalLayout_6")
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        self.them_btn = QtWidgets.QPushButton(self.layoutWidget)
+        self.them_btn = QtWidgets.QPushButton(self.widget)
         self.them_btn.setMinimumSize(QtCore.QSize(80, 40))
         self.them_btn.setStyleSheet("QPushButton {\n"
 "    background-color:  rgba(30, 170, 255, 0.7); /* Nền xanh trong suốt */\n"
@@ -322,7 +364,7 @@ class Ui_Form(object):
         self.them_btn.setText("")
         self.them_btn.setObjectName("them_btn")
         self.horizontalLayout_2.addWidget(self.them_btn)
-        self.huy_btn = QtWidgets.QPushButton(self.layoutWidget)
+        self.huy_btn = QtWidgets.QPushButton(self.widget)
         self.huy_btn.setMinimumSize(QtCore.QSize(80, 40))
         self.huy_btn.setStyleSheet("#huy_btn {\n"
 "    background-color: white;\n"
@@ -344,8 +386,8 @@ class Ui_Form(object):
         self.huy_btn.setObjectName("huy_btn")
         self.horizontalLayout_2.addWidget(self.huy_btn)
         self.horizontalLayout_6.addLayout(self.horizontalLayout_2)
-        spacerItem7 = QtWidgets.QSpacerItem(508, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_6.addItem(spacerItem7)
+        spacerItem8 = QtWidgets.QSpacerItem(508, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_6.addItem(spacerItem8)
         self.gridLayout.addLayout(self.horizontalLayout_6, 7, 0, 1, 1)
 
         self.retranslateUi(Form)
@@ -363,6 +405,7 @@ class Ui_Form(object):
         self.label_4.setText(_translate("Form", "Danh mục sản phẩm : "))
         self.label_10.setText(_translate("Form", "Hình ảnh : "))
         self.line_link_hinhanh.setPlaceholderText(_translate("Form", "Liên kết hình ảnh..."))
+        self.chon_anh_btn.setText(_translate("Form", "Chọn ảnh"))
         self.label_7.setText(_translate("Form", "Ghi chú :"))
         self.line_ghiChu.setPlaceholderText(_translate("Form", "  Ghi chú..."))
         self.label_8.setText(_translate("Form", "Giá bán :  "))

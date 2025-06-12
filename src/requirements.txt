@@ -13,3 +13,9 @@ reportlab==4.0.4
 
 # Kết nối mạng
 requests==2.31.0
+
+#APS Restful
+Flask==2.3.2
+
+#upload ảnh
+cloudinary==1.33.0

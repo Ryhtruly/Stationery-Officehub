@@ -50,19 +50,20 @@ class WarehouseDAO:
     @staticmethod
     def get_warehouse_products():
         """
-        Lấy tất cả sản phẩm trong kho từ database
+        Lấy tất cả sản phẩm trong kho từ database (chỉ lấy từ kho id_warehouse = 1)
 
         Returns:
-            list: Danh sách sản phẩm trong kho
+            list: Danh sách sản phẩm trong kho với tên sản phẩm và tồn kho
         """
         try:
             conn = create_connection()
             cursor = conn.cursor()
 
             query = """
-            SELECT wp.id_warehouse, wp.id_prod, p.name, wp.inventory
+            SELECT p.name, wp.inventory, wp.id_prod
             FROM dbo.Warehouse_Product wp
             JOIN dbo.Products p ON wp.id_prod = p.id_prod
+            WHERE wp.id_warehouse = 1
             """
 
             cursor.execute(query)
@@ -70,10 +71,10 @@ class WarehouseDAO:
 
             for row in cursor.fetchall():
                 product = WarehouseProduct(
-                    id_warehouse=row[0],
-                    id_prod=row[1],
-                    name=row[2],
-                    inventory=row[3]
+                    id_warehouse=1,  # Cố định id_warehouse
+                    id_prod=row[2],  # Lấy id_prod từ truy vấn
+                    name=row[0],
+                    inventory=row[1]
                 )
                 warehouse_products.append(product)
 

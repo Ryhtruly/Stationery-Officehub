@@ -111,7 +111,6 @@ def load_employee_data(table):
 
         widget.setLayout(layout)
         table.setCellWidget(row, 7, widget)
-    table.resizeColumnsToContents()
 
 def search_employees(table, keyword):
     """
@@ -155,7 +154,6 @@ def search_employees(table, keyword):
         table.setItem(row, 6, QTableWidgetItem(str(nhan_vien.salary)))
         widget = QWidget()
         layout = QHBoxLayout(widget)
-        layout.setContentsMargins(5, 2, 5, 2)
 
         # Sử dụng functools.partial thay vì lambda để tránh vấn đề với biến
         from functools import partial
@@ -269,25 +267,40 @@ def delete_employee(table, employee_id):
         app = QApplication.instance()
         main_window = app.activeWindow()
 
-        # Gọi EmployeeDAO để chuyển đổi trạng thái
-        success, new_status, message = EmployeeDAO.toggle_employee_status(employee_id)
+        # Lấy thông tin nhân viên để kiểm tra trạng thái
+        nhan_vien = EmployeeDAO.get_nhan_vien_by_id(employee_id)
+        if not nhan_vien:
+            QMessageBox.critical(main_window, 'Lỗi', f"Không tìm thấy nhân viên có ID {employee_id}")
+            return
 
-        if success:
-            QMessageBox.information(main_window, 'Thành công', message)
-            table.setRowCount(0)
-            load_employee_data(table)
+        # Xác định hành động và thông điệp dựa trên trạng thái
+        action = "dừng hoạt động" if nhan_vien.status == 1 else "tái hoạt động"
+        confirm_message = f"Bạn có muốn {action} nhân viên {nhan_vien.fullname} (ID: {employee_id}) không?"
+
+        # Hiển thị dialog xác nhận
+        reply = QMessageBox.question(
+            main_window,
+            'Xác nhận',
+            confirm_message,
+            QMessageBox.Yes | QMessageBox.No,
+            QMessageBox.No
+        )
+
+        if reply == QMessageBox.Yes:
+            # Thực hiện chuyển đổi trạng thái
+            success, new_status, message = EmployeeDAO.toggle_employee_status(employee_id)
+
+            if success:
+                QMessageBox.information(main_window, 'Thành công', message)
+                table.setRowCount(0)
+                load_employee_data(table)
+            else:
+                QMessageBox.critical(main_window, 'Lỗi', message)
         else:
-            QMessageBox.critical(main_window, 'Lỗi', message)
+            print(f"Hủy {action} nhân viên ID: {employee_id}")
 
     except Exception as e:
         print(f"Lỗi khi cập nhật trạng thái nhân viên: {str(e)}")
         import traceback
         traceback.print_exc()
-
-def manage_account(employee_id):
-    """
-    Quản lý tài khoản của nhân viên
-    """
-    from src.modules.admin.dialog.manage_account_dialog import ManageAccountDialog
-    dialog = ManageAccountDialog(None, employee_id)
-    dialog.exec_()
+        QMessageBox.critical(main_window, 'Lỗi', f"Đã xảy ra lỗi: {str(e)}")

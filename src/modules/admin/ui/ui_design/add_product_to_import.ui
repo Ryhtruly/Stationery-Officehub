@@ -570,6 +570,12 @@ QPushButton:pressed {
              <height>35</height>
             </size>
            </property>
+           <property name="maximumSize">
+            <size>
+             <width>271</width>
+             <height>16777215</height>
+            </size>
+           </property>
            <property name="styleSheet">
             <string notr="true">QLineEdit {
     background-color: #ffffff; /* Màu nền trắng */
@@ -605,54 +611,6 @@ QLineEdit:focus {
           </size>
          </property>
         </spacer>
-       </item>
-       <item>
-        <layout class="QVBoxLayout" name="verticalLayout_8">
-         <item>
-          <widget class="QLabel" name="label_9">
-           <property name="minimumSize">
-            <size>
-             <width>141</width>
-             <height>18</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>9</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>Nhập vào kho : </string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="combo_box_kho">
-           <property name="minimumSize">
-            <size>
-             <width>281</width>
-             <height>35</height>
-            </size>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QComboBox {
-    background-color: #ffffff; /* Màu nền trắng */
-    border: 1px solid #cccccc; /* Viền xám nhạt */
-    border-radius: 15px; /* Bo góc */
-    padding: 5px; /* Khoảng cách bên trong */
-    font-size: 14px;
-    color: #333333;
-}
-
-/* Hiệu ứng khi ô nhập liệu được chọn */
-QComboBox:focus {
-    border: 1px solid #4a90e2; /* Viền xanh khi focus */
-    background-color: #e6f0fa; /* Nền xanh nhạt khi focus */
-}</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
        </item>
       </layout>
      </item>

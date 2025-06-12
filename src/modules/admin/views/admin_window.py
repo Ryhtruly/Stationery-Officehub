@@ -311,11 +311,7 @@ class AdminWindow(QMainWindow):
 
         self.ui.tb_kho_1.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Interactive)
         self.ui.tb_kho_1.horizontalHeader().setStretchLastSection(True)
-        set_column_ratios(self.ui.tb_kho_1, [0.28, 0.47, 0.25])
-
-        self.ui.tb_kho_2.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Interactive)
-        self.ui.tb_kho_2.horizontalHeader().setStretchLastSection(True)
-        set_column_ratios(self.ui.tb_kho_2, [0.28, 0.47, 0.25])
+        set_column_ratios(self.ui.tb_kho_1, [0.7, 0.3])
 
         self.ui.table_nhanvien.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Interactive)
         self.ui.table_nhanvien.horizontalHeader().setStretchLastSection(True)
