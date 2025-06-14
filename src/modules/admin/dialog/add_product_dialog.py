@@ -180,9 +180,8 @@ class AddProductDialog(QtWidgets.QDialog):
             QtWidgets.QMessageBox.warning(self, "Lỗi", "ID sản phẩm phải là số nguyên.")
             return False
 
-        # Kiểm tra tên không chứa ký tự đặc biệt
         if not re.match(r'^[\w\sÀ-ỹ0-9]+$', name, re.UNICODE):
-            QtWidgets.QMessageBox.warning(self, "Lỗi", "Tên sản phẩm chỉ được chứa chữ (có dấu), số và dấu cách.")
+            QtWidgets.QMessageBox.warning(self, "Lỗi", "Tên sản phẩm chỉ được chứa chữ, số và dấu cách.")
             return False
 
         # Kiểm tra giá không âm

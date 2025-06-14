@@ -214,9 +214,8 @@ class AddPromotionDialog(QtWidgets.QDialog):
             QMessageBox.warning(self, "Lỗi", "ID khuyến mãi phải là số nguyên.")
             return False
 
-        # Kiểm tra tên không chứa ký tự đặc biệt
-        if not re.match(r'^[a-zA-Z0-9\s-]+$', name):
-            QMessageBox.warning(self, "Lỗi", "Tên khuyến mãi chỉ được chứa chữ, số, dấu cách và dấu gạch ngang.")
+        if not re.match(r'^[\w\sÀ-ỹ0-9]+$', name, re.UNICODE):
+            QtWidgets.QMessageBox.warning(self, "Lỗi", "Khuyến mãi chỉ được chứa chữ, số và dấu cách.")
             return False
 
         # Kiểm tra tên trùng

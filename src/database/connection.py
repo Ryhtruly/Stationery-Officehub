@@ -1,5 +1,8 @@
 import pyodbc
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 def create_connection():
     """
@@ -9,11 +12,11 @@ def create_connection():
         pyodbc.Connection: Đối tượng kết nối đến database
     """
     try:
-        # Thông tin kết nối từ biến môi trường hoặc giá trị mặc định
-        server = os.getenv('DB_SERVER', 'MSI\\SQLEXPRESS')
-        database = os.getenv('DB_NAME', 'Stationery')
-        username = os.getenv('DB_USERNAME', 'sa')
-        password = os.getenv('DB_PASSWORD', '123')
+        # Thông tin kết nối từ biến môi trường
+        server = os.getenv('DB_SERVER')
+        database = os.getenv('DB_NAME')
+        username = os.getenv('DB_USERNAME')
+        password = os.getenv('DB_PASSWORD')
 
         # Tạo chuỗi kết nối
         conn_str = (
@@ -36,7 +39,6 @@ def create_connection():
         print(f"Lỗi kết nối database: {str(e)}")
         raise
 
-
 def test_connection():
     """
     Kiểm tra kết nối đến database
@@ -53,7 +55,6 @@ def test_connection():
     except Exception as e:
         print(f"Lỗi kết nối: {str(e)}")
         return False
-
 
 if __name__ == "__main__":
     test_connection()

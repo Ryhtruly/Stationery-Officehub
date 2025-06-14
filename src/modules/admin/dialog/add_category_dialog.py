@@ -120,9 +120,8 @@ class AddCategoryDialog(QtWidgets.QDialog):
             QtWidgets.QMessageBox.warning(self, "Lỗi", "ID danh mục phải là số nguyên.")
             return False
 
-        # Kiểm tra tên không chứa ký tự đặc biệt
-        if not re.match(r'^[a-zA-Z0-9\s-]+$', name):
-            QtWidgets.QMessageBox.warning(self, "Lỗi", "Tên danh mục chỉ được chứa chữ, số, dấu cách và dấu gạch ngang.")
+        if not re.match(r'^[\w\sÀ-ỹ0-9]+$', name, re.UNICODE):
+            QtWidgets.QMessageBox.warning(self, "Lỗi", "Danh mục sản phẩm chỉ được chứa chữ, số và dấu cách.")
             return False
 
         # Kiểm tra tên trùng (không phân biệt hoa/thường)

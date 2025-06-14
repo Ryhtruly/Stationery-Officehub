@@ -19,3 +19,6 @@ Flask==2.3.2
 
 #upload ảnh
 cloudinary==1.33.0
+
+# Đọc biến môi trường
+python-dotenv==1.0.0

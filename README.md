@@ -134,18 +134,16 @@ _Thiết lập cơ sở dữ liệu_ :
 3. **Kiểm tra cơ sở dữ liệu:**
    - Sau khi chạy script, kiểm tra xem cơ sở dữ liệu `Stationery` đã được tạo chưa bằng cách mở rộng mục **Databases** trong SSMS.
    - Mở rộng `Stationery` > **Tables** để xem các bảng như `Accounts`, `Products`, `Employees`, v.v.
-   - Nếu không có lỗi, bạn đã thiết lập thành công cơ sở dữ liệu.
+     - Nếu không có lỗi, bạn đã thiết lập thành công cơ sở dữ liệu.
 
-4. **Cấu hình kết nối cơ sở dữ liệu trong ứng dụng:**
-   - Mở file `src/core/database/connection.py` trong dự án.
-   - Sửa connection string để khớp với SQL Server của bạn. Ví dụ:
-     ```python
-     conn_str = (
-         r"Driver={SQL Server};"
-         r"Server=localhost\SQLEXPRESS;"
-         r"Database=OfficeHubDB;"
-         r"Trusted_Connection=True;"
-     )
+       4. **Cấu hình kết nối cơ sở dữ liệu trong ứng dụng:**
+          - Mở file `.env` trong dự án.
+            - Sửa connection string để khớp với SQL Server của bạn. Ví dụ:
+              ```python
+                  DB_SERVER=MSI\SQLEXPRESS
+                  DB_NAME=Stationery
+                  DB_USERNAME=sa
+                  DB_PASSWORD=123
 
 _Đăng nhập_ :
 
