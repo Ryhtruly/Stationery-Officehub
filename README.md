@@ -129,21 +129,25 @@ _Thiết lập cơ sở dữ liệu_ :
    - Mở file `setup/setup_database.sql` trong thư mục dự án.
    - Copy toàn bộ nội dung file và dán vào một query mới trong SSMS (File > New > Query).
    - Nhấn **Execute** (hoặc phím F5) để chạy script.
-   - Script sẽ tạo cơ sở dữ liệu `Stationery`, các bảng cần thiết, và chèn dữ liệu mẫu ( chú ý dữ liệu đã được có trong file setup, bạn có thể chỉnh sửa tùy ý dựa trên chức năng có trên ứng dụng.
+     - Script sẽ tạo cơ sở dữ liệu `Stationery`, các bảng cần thiết, và chèn dữ liệu mẫu ( chú ý dữ liệu đã được có trong file setup, bạn có thể chỉnh sửa tùy ý dựa trên chức năng có trên ứng dụng.
 
-3. **Kiểm tra cơ sở dữ liệu:**
-   - Sau khi chạy script, kiểm tra xem cơ sở dữ liệu `Stationery` đã được tạo chưa bằng cách mở rộng mục **Databases** trong SSMS.
-   - Mở rộng `Stationery` > **Tables** để xem các bảng như `Accounts`, `Products`, `Employees`, v.v.
-     - Nếu không có lỗi, bạn đã thiết lập thành công cơ sở dữ liệu.
+       3. **Kiểm tra cơ sở dữ liệu:**
+          - Sau khi chạy script, kiểm tra xem cơ sở dữ liệu `Stationery` đã được tạo chưa bằng cách mở rộng mục **Databases** trong SSMS.
+            - Mở rộng `Stationery` > **Tables** để xem các bảng như `Accounts`, `Products`, `Employees`, v.v.
+              - Nếu không có lỗi, bạn đã thiết lập thành công cơ sở dữ liệu.
 
-       4. **Cấu hình kết nối cơ sở dữ liệu trong ứng dụng:**
-          - Mở file `.env` trong dự án.
-            - Sửa connection string để khớp với SQL Server của bạn. Ví dụ:
-              ```python
-                  DB_SERVER=MSI\SQLEXPRESS
-                  DB_NAME=Stationery
-                  DB_USERNAME=sa
-                  DB_PASSWORD=123
+                4. **Cấu hình kết nối cơ sở dữ liệu trong ứng dụng:**
+                   - Mở file `.env` trong dự án ( hoặc tạo nếu như không có ).
+                     - Sửa connection string để khớp với SQL Server của bạn. Ví dụ:
+                       ```python
+                           DB_SERVER=MSI\SQLEXPRESS
+                           DB_NAME=Stationery
+                           DB_USERNAME=sa
+                           DB_PASSWORD=123
+                           CLOUDINARY_CLOUD_NAME=dpbfb6hai
+                           CLOUDINARY_API_KEY=536479469775784
+                           CLOUDINARY_API_SECRET=LXFgaRYj07-SAWCAcCzu9OcbgSo ( các set up cho service cùng lúc )
+              
 
 _Đăng nhập_ :
 
